@@ -1,0 +1,15 @@
+{
+  "short_name": "IAParlay",
+  "name": "IA Deportiva Parlay Pro",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2652/2652218.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0d1117",
+  "background_color": "#0d1117"
+}
