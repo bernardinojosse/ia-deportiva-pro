@@ -2,24 +2,32 @@ import streamlit as st
 import requests
 
 # Configuración de la App
-st.set_page_config(page_title="IA DEPORTIVA: MERCADO REAL", page_icon="🎯")
+st.set_page_config(page_title="IA DEPORTIVA: PARLAYS REALES", page_icon="💰")
 
 st.markdown("""
     <style>
     .stApp { background-color: #0d1117; color: white; }
-    .card { background-color: #161b22; padding: 15px; border-radius: 12px; border: 1px solid #30363d; margin-bottom: 15px; }
-    .league-tag { background-color: #238636; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; }
-    .team-name { font-size: 1.1rem; font-weight: bold; color: #58a6ff; }
-    .odds-val { font-size: 1.2rem; font-weight: bold; color: #3fb950; }
+    .parlay-card { 
+        background: linear-gradient(145deg, #1e2530, #161b22);
+        padding: 20px; border-radius: 15px; border: 2px solid #238636; margin-bottom: 25px;
+    }
+    .match-card { background-color: #161b22; padding: 12px; border-radius: 10px; border: 1px solid #30363d; margin-bottom: 10px; }
+    .team-name { color: #58a6ff; font-weight: bold; }
+    .odds-val { color: #3fb950; font-weight: bold; }
+    .parlay-header { color: #f1c40f; font-weight: bold; font-size: 1.5rem; text-align: center; margin-bottom: 15px; }
+    .total-odds { font-size: 1.4rem; color: #f1c40f; text-align: right; margin-top: 10px; }
     </style>
     """, unsafe_allow_html=True)
 
 # Llave desde Secrets
-API_KEY = st.secrets["ODDS_API_KEY"]
+try:
+    API_KEY = st.secrets["ODDS_API_KEY"]
+except:
+    st.error("⚠️ Configura 'ODDS_API_KEY' en los Secrets de Streamlit.")
+    st.stop()
 
-def obtener_datos_reales():
+def obtener_datos():
     # Buscamos en todas las ligas de fútbol disponibles (soccer)
-    # El parámetro 'regions=eu' suele dar las ligas más importantes
     url = f"https://api.the-odds-api.com/v4/sports/soccer/odds/?apiKey={API_KEY}&regions=us,eu&markets=h2h"
     try:
         response = requests.get(url)
@@ -27,49 +35,59 @@ def obtener_datos_reales():
     except:
         return []
 
-st.title("🎯 Cuotas Reales del Mercado")
-st.write("Datos extraídos directamente de las casas de apuestas (Sin simulaciones)")
+st.title("💰 Generador de Parlays Pro")
+num_selecciones = st.slider("Número de selecciones para el parlay:", 3, 10, 5)
 
-if st.button("🚀 BUSCAR PARTIDOS EN TODAS LAS LIGAS"):
-    with st.spinner("Obteniendo datos reales..."):
-        partidos = obtener_datos_reales()
+if st.button("🚀 GENERAR PARLAY MÁS SEGURO"):
+    with st.spinner("Analizando mercados reales..."):
+        datos = obtener_datos()
         
-        if isinstance(partidos, dict) and "msg" in partidos:
-            st.error(f"Error: {partidos['msg']}")
-        elif not partidos:
-            st.warning("No se encontraron partidos activos en las ligas permitidas.")
+        if isinstance(datos, dict) and "msg" in datos:
+            st.error(f"Error de API: {datos['msg']}")
+        elif not datos:
+            st.warning("No hay suficientes partidos activos.")
         else:
-            for p in partidos[:20]: # Mostramos los primeros 20 encontrados
-                home_team = p['home_team']
-                away_team = p['away_team']
-                liga = p['sport_title']
-                
-                # Buscamos las cuotas del primer proveedor disponible (ej. DraftKings o BetMGM)
-                bookmaker = p['bookmakers'][0] if p['bookmakers'] else None
-                
-                if bookmaker:
-                    markets = bookmaker['markets'][0]['outcomes']
-                    # Organizamos las cuotas: Local, Empate, Visita
-                    odds_dict = {o['name']: o['price'] for o in markets}
+            # --- PROCESAMIENTO DE PARLAY ---
+            lista_favoritos = []
+            
+            for p in datos:
+                if p['bookmakers']:
+                    # Obtenemos las cuotas del primer proveedor
+                    outcomes = p['bookmakers'][0]['markets'][0]['outcomes']
+                    # Encontramos la cuota más baja (el favorito del partido)
+                    fav = min(outcomes, key=lambda x: x['price'])
                     
-                    st.markdown(f"""
-                    <div class="card">
-                        <span class="league-tag">{liga}</span>
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top:10px;">
-                            <div style="width: 45%; text-align: center;">
-                                <span class="team-name">{home_team}</span><br>
-                                <span class="odds-val">{odds_dict.get(home_team, 'N/A')}</span>
-                            </div>
-                            <div style="color: #8b949e; font-weight: bold;">VS</div>
-                            <div style="width: 45%; text-align: center;">
-                                <span class="team-name">{away_team}</span><br>
-                                <span class="odds-val">{odds_dict.get(away_team, 'N/A')}</span>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; color: #8b949e;">
-                            Empate: <span style="color:white;">{odds_dict.get('Draw', 'N/A')}</span> | Fuente: {bookmaker['title']}
-                        </div>
-                    </div>
-                    """, unsafe_allow_html=True)
+                    lista_favoritos.append({
+                        'liga': p['sport_title'],
+                        'equipo': fav['name'],
+                        'cuota': fav['price'],
+                        'versus': f"{p['home_team']} vs {p['away_team']}"
+                    })
 
-st.sidebar.info("Esta versión muestra cuotas reales. Una cuota menor significa que ese equipo es el favorito.")
+            # Ordenamos por cuota (de menor a mayor = más probable)
+            seguros = sorted(lista_favoritos, key=lambda x: x['cuota'])[:num_selecciones]
+
+            if len(seguros) < num_selecciones:
+                st.warning(f"Solo se encontraron {len(seguros)} partidos disponibles.")
+
+            # --- MOSTRAR PARLAY ---
+            st.markdown('<div class="parlay-card">', unsafe_allow_html=True)
+            st.markdown(f'<div class="parlay-header">🏆 PARLAY SUGERIDO ({len(seguros)} SELECCIONES)</div>', unsafe_allow_html=True)
+            
+            cuota_total = 1.0
+            for item in seguros:
+                st.markdown(f"""
+                <div style="border-bottom: 1px solid #333; padding: 10px 0;">
+                    <span style="color:#f1c40f;">●</span> <b>{item['equipo']}</b> - <span class="odds-val">{item['cuota']}</span><br>
+                    <small style="color:#8b949e;">{item['liga']} | {item['versus']}</small>
+                </div>
+                """, unsafe_allow_html=True)
+                cuota_total *= item['cuota']
+            
+            st.markdown(f'<div class="total-odds">MOMIO TOTAL: {cuota_total:.2f}</div>', unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+
+            # --- LISTADO GENERAL ---
+            with st.expander("Ver todos los partidos analizados"):
+                for p in datos[:20]:
+                    st.write(f"**{p['sport_title']}**: {p['home_team']} vs {p['away_team']}")
