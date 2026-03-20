@@ -2,25 +2,30 @@ name: Escaneo Automatico NuviCore
 
 on:
   schedule:
-    - cron: '0 */3 * * *' # Se ejecuta cada 3 horas
-  workflow_dispatch: # Esto activa el botón para probarlo MANUALMENTE
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
 
 jobs:
   run-scraper:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      
+      - name: Configurar Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-      - name: Instalar dependencias
+          
+      - name: Instalar Librerias
         run: pip install pandas requests beautifulsoup4 lxml
-      - name: Ejecutar Scraper Total
+        
+      - name: Ejecutar Scraper
         run: python main_scraper.py
-      - name: Actualizar base de datos en GitHub
+        
+      - name: Subir Cambios a GitHub
         run: |
           git config --global user.name "NuviCore-Bot"
           git config --global user.email "bot@nuvicore.com"
           git add campionati/*.csv
-          git commit -m "Actualización automática de cuotas" || echo "Sin cambios"
-          git push
+          git commit -m "Actualización automática de cuotas" || echo "Sin cambios detectados"
+          git push || echo "No hay cambios para subir"
