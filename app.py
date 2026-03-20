@@ -1,93 +1,95 @@
 import streamlit as st
 import requests
+from datetime import datetime, timedelta
 
 # Configuración de la App
-st.set_page_config(page_title="IA DEPORTIVA: PARLAYS REALES", page_icon="💰")
+st.set_page_config(page_title="IA: PARLAY DEL DÍA", page_icon="📅")
 
 st.markdown("""
     <style>
     .stApp { background-color: #0d1117; color: white; }
     .parlay-card { 
         background: linear-gradient(145deg, #1e2530, #161b22);
-        padding: 20px; border-radius: 15px; border: 2px solid #238636; margin-bottom: 25px;
+        padding: 20px; border-radius: 15px; border: 2px solid #f1c40f; margin-bottom: 25px;
     }
-    .match-card { background-color: #161b22; padding: 12px; border-radius: 10px; border: 1px solid #30363d; margin-bottom: 10px; }
-    .team-name { color: #58a6ff; font-weight: bold; }
+    .match-tag { font-size: 0.8rem; color: #8b949e; }
     .odds-val { color: #3fb950; font-weight: bold; }
-    .parlay-header { color: #f1c40f; font-weight: bold; font-size: 1.5rem; text-align: center; margin-bottom: 15px; }
-    .total-odds { font-size: 1.4rem; color: #f1c40f; text-align: right; margin-top: 10px; }
+    .total-gain { font-size: 1.5rem; color: #f1c40f; text-align: center; margin-top: 15px; border-top: 1px dashed #333; padding-top: 10px; }
     </style>
     """, unsafe_allow_html=True)
 
 # Llave desde Secrets
-try:
-    API_KEY = st.secrets["ODDS_API_KEY"]
-except:
-    st.error("⚠️ Configura 'ODDS_API_KEY' en los Secrets de Streamlit.")
-    st.stop()
+API_KEY = st.secrets["ODDS_API_KEY"]
 
-def obtener_datos():
-    # Buscamos en todas las ligas de fútbol disponibles (soccer)
-    url = f"https://api.the-odds-api.com/v4/sports/soccer/odds/?apiKey={API_KEY}&regions=us,eu&markets=h2h"
+def obtener_partidos_hoy():
+    # Definimos el rango de tiempo: Desde ahora hasta mañana a esta misma hora (24h)
+    ahora = datetime.utcnow().isoformat() + 'Z'
+    mañana = (datetime.utcnow() + timedelta(days=1)).isoformat() + 'Z'
+    
+    url = f"https://api.the-odds-api.com/v4/sports/soccer/odds/"
+    params = {
+        'apiKey': API_KEY,
+        'regions': 'us,eu',
+        'markets': 'h2h',
+        'commenceTimeFrom': ahora,
+        'commenceTimeTo': mañana
+    }
+    
     try:
-        response = requests.get(url)
+        response = requests.get(url, params=params)
         return response.json()
     except:
         return []
 
-st.title("💰 Generador de Parlays Pro")
-num_selecciones = st.slider("Número de selecciones para el parlay:", 3, 10, 5)
+st.title("💰 Parlay de Hoy")
+st.write(f"Análisis exclusivo para la jornada del: **{datetime.now().strftime('%d/%m/%Y')}**")
 
-if st.button("🚀 GENERAR PARLAY MÁS SEGURO"):
-    with st.spinner("Analizando mercados reales..."):
-        datos = obtener_datos()
+num_pick = st.select_slider("Selecciona cuántos fijos quieres en tu parlay:", options=[3, 4, 5, 6])
+
+if st.button("🎰 GENERAR PARLAY DE HOY"):
+    with st.spinner("Filtrando los partidos más seguros de hoy..."):
+        datos = obtener_partidos_hoy()
         
-        if isinstance(datos, dict) and "msg" in datos:
-            st.error(f"Error de API: {datos['msg']}")
-        elif not datos:
-            st.warning("No hay suficientes partidos activos.")
+        if not datos or isinstance(datos, dict):
+            st.warning("No se encontraron partidos suficientes para las próximas 24 horas.")
         else:
-            # --- PROCESAMIENTO DE PARLAY ---
-            lista_favoritos = []
-            
+            # Procesar solo favoritos de hoy
+            hoy_favoritos = []
             for p in datos:
                 if p['bookmakers']:
-                    # Obtenemos las cuotas del primer proveedor
                     outcomes = p['bookmakers'][0]['markets'][0]['outcomes']
-                    # Encontramos la cuota más baja (el favorito del partido)
                     fav = min(outcomes, key=lambda x: x['price'])
                     
-                    lista_favoritos.append({
+                    hoy_favoritos.append({
                         'liga': p['sport_title'],
                         'equipo': fav['name'],
                         'cuota': fav['price'],
-                        'versus': f"{p['home_team']} vs {p['away_team']}"
+                        'hora': p['commence_time'].split('T')[1][:5],
+                        'vs': f"{p['home_team']} vs {p['away_team']}"
                     })
 
-            # Ordenamos por cuota (de menor a mayor = más probable)
-            seguros = sorted(lista_favoritos, key=lambda x: x['cuota'])[:num_selecciones]
+            # Seleccionamos los más seguros (cuotas más bajas) de hoy
+            parlay_hoy = sorted(hoy_favoritos, key=lambda x: x['cuota'])[:num_pick]
 
-            if len(seguros) < num_selecciones:
-                st.warning(f"Solo se encontraron {len(seguros)} partidos disponibles.")
+            if len(parlay_hoy) < num_pick:
+                st.info(f"Solo hay {len(parlay_hoy)} partidos seguros disponibles para hoy.")
 
-            # --- MOSTRAR PARLAY ---
+            # Mostrar Parlay
             st.markdown('<div class="parlay-card">', unsafe_allow_html=True)
-            st.markdown(f'<div class="parlay-header">🏆 PARLAY SUGERIDO ({len(seguros)} SELECCIONES)</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="text-align:center; font-weight:bold; color:#f1c40f;">🏆 PARLAY 100% MERCADO - {len(parlay_hoy)} SELECCIONES</div><br>', unsafe_allow_html=True)
             
-            cuota_total = 1.0
-            for item in seguros:
+            momio_total = 1.0
+            for pick in parlay_hoy:
                 st.markdown(f"""
-                <div style="border-bottom: 1px solid #333; padding: 10px 0;">
-                    <span style="color:#f1c40f;">●</span> <b>{item['equipo']}</b> - <span class="odds-val">{item['cuota']}</span><br>
-                    <small style="color:#8b949e;">{item['liga']} | {item['versus']}</small>
+                <div style="margin-bottom:10px;">
+                    <span class="match-tag">{pick['liga']} | {pick['hora']} UTC</span><br>
+                    <b>{pick['equipo']}</b> gana a <span class="odds-val">{pick['cuota']}</span><br>
+                    <small>{pick['vs']}</small>
                 </div>
                 """, unsafe_allow_html=True)
-                cuota_total *= item['cuota']
+                momio_total *= pick['cuota']
             
-            st.markdown(f'<div class="total-odds">MOMIO TOTAL: {cuota_total:.2f}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="total-gain">MOMIO TOTAL: {momio_total:.2f}</div>', unsafe_allow_html=True)
             st.markdown('</div>', unsafe_allow_html=True)
 
-            # --- LISTADO GENERAL ---
-            with st.expander("Ver todos los partidos analizados"):
-                for p in datos[:20]:
-                    st.write(f"**{p['sport_title']}**: {p['home_team']} vs {p['away_team']}")
+st.sidebar.write("Nota: Este filtro solo muestra partidos que inician en las próximas 24 horas.")
