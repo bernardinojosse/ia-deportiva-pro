@@ -1,36 +1,40 @@
-import pandas as pd
+import scrapper_engine as engine # Este debe ser el nombre de tu archivo con la lógica que me pasaste
 import os
-# Importamos tu lógica principal que me pasaste anteriormente
-import scrapper_engine as engine 
+import time
 
-def ejecutar_limpieza_directorios():
-    """Asegura que existan las carpetas necesarias para no dar error."""
+def auto_scan_all():
+    # 1. Definimos la lista de todas las ligas según tus IDs originales
+    # 0: Serie A, 01: Serie B, 02: Champions, 03: Europa League, etc.
+    ligas_a_escanear = ["0", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15"]
+    
+    print(f"🚀 Iniciando Escaneo Automático de {len(ligas_a_escanear)} ligas...")
+    
+    # 2. Aseguramos que las carpetas existan para evitar errores de escritura
     for folder in ['campionati', 'partite']:
         if not os.path.exists(folder):
             os.makedirs(folder)
-            print(f"Carpeta creada: {folder}")
+            print(f"📁 Carpeta creada: {folder}")
 
-def run_total_update():
-    print(f"--- INICIANDO ESCANEO GLOBAL NUVI-CORE ---")
-    ejecutar_limpieza_directorios()
-    
-    # Lista de IDs de campeonatos basada en tu función init()
-    # 0: Serie A, 01: Serie B, 02: Champions, etc.
-    campionatos_a_escaneares = ["0", "01", "02", "04", "06", "08", "10"]
-    
-    for camp_id in campionatos_a_escaneares:
+    # 3. Bucle principal de escaneo
+    for id_liga in ligas_a_escanear:
         try:
-            print(f"Scrapeando Campeonato ID: {camp_id}...")
-            # Llamamos a tu función scaricaCampionato que ya tiene el matching y guardado de CSV
-            tabella = engine.scaricaCampionato(camp_id) 
+            print(f"🔍 Escaneando Liga ID: {id_liga}...")
             
-            # También ejecutamos la lógica de 'allFromCampionato' para actualizar archivos de partidos
+            # Ejecuta tu función de descarga y matching
+            # Esta función ya guarda el CSV en 'campionati/campionato{id}.csv'
+            tabella = engine.scaricaCampionato(id_liga) 
+            
+            # Genera los archivos individuales de partidos en 'partite/'
             engine.allFromCampionato(tabella)
             
-            print(f"Éxito: Campeonato {camp_id} actualizado.")
+            print(f"✅ Liga {id_liga} actualizada correctamente.")
+            
+            # Pausa de seguridad para evitar bloqueos de las casas de apuestas
+            time.sleep(2) 
+            
         except Exception as e:
-            print(f"Error en campeonato {camp_id}: {str(e)}")
+            print(f"❌ Error en Liga {id_liga}: {str(e)}")
 
-if __name__ == '__main__':
-    run_total_update()
-    print("--- ACTUALIZACIÓN FINALIZADA ---")
+if __name__ == "__main__":
+    auto_scan_all()
+    print("🏁 PROCESO COMPLETADO: Todas las ligas han sido sincronizadas.")
