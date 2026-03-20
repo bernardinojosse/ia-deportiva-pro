@@ -24,4 +24,3 @@ jobs:
           git add campionati/*.csv
           git commit -m "Cuotas actualizadas automáticamente" || echo "Sin cambios"
           git push
-
