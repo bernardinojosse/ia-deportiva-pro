@@ -2,69 +2,96 @@ import streamlit as st
 import requests
 from datetime import datetime
 
-st.set_page_config(page_title="IA DEPORTIVA REAL-TIME", page_icon="⚡")
+# Configuración de la App
+st.set_page_config(page_title="IA DEPORTIVA: NCAAM", page_icon="🏀")
 
-# Estilo Profesional Oscuro
+# Estilo visual premium (Fondo oscuro y tarjetas azules)
 st.markdown("""
     <style>
     .stApp { background-color: #0d1117; color: white; }
-    .card { background-color: #161b22; padding: 15px; border-radius: 12px; border: 1px solid #30363d; margin-bottom: 10px; }
-    .team-name { font-size: 1.1rem; font-weight: bold; color: #58a6ff; }
-    .live-badge { background-color: #238636; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; }
+    .card { 
+        background-color: #161b22; 
+        padding: 20px; 
+        border-radius: 12px; 
+        border-left: 5px solid #0056b3; 
+        margin-bottom: 15px; 
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    .team-name { font-size: 1.1rem; font-weight: bold; color: #ffffff; }
+    .vs { color: #58a6ff; font-weight: bold; font-size: 0.9rem; }
+    .prob-bar { background-color: #30363d; border-radius: 5px; height: 10px; margin: 10px 0; }
+    .prob-fill { background-color: #238636; height: 10px; border-radius: 5px; }
     </style>
     """, unsafe_allow_html=True)
 
-API_KEY = "928b863f5c579d836d47fc5563ed0019"
-HEADERS = {'x-rapidapi-key': API_KEY, 'x-rapidapi-host': 'v3.football.api-sports.io'}
+# Cargar API KEY desde Secrets de Streamlit
+# Asegúrate de que el nombre sea EXACTAMENTE 'SPORTS_API_KEY'
+try:
+    API_KEY = st.secrets["SPORTS_API_KEY"]
+except:
+    st.error("⚠️ No se encontró la llave 'SPORTS_API_KEY' en los Secrets de Streamlit.")
+    st.stop()
 
-def obtener_datos_vivos():
-    # Intentamos traer partidos de HOY de cualquier liga disponible en tu plan
-    url = "https://v3.football.api-sports.io/fixtures?live=all"
+# Sportradar usa el formato AAAA/MM/DD
+FECHA_HOY = datetime.now().strftime("%Y/%m/%d")
+
+def obtener_calendario_ncaa():
+    # Endpoint para Baloncesto Universitario (NCAAM) v8
+    url = f"https://api.sportradar.us/ncaam/trial/v8/en/games/{FECHA_HOY}/schedule.json"
+    params = {"api_key": API_KEY}
+    
     try:
-        response = requests.get(url, headers=HEADERS)
-        data = response.json()
-        return data.get('response', [])
-    except:
+        response = requests.get(url, params=params)
+        if response.status_code == 200:
+            return response.json().get('games', [])
+        elif response.status_code == 403:
+            st.error("🚫 Error 403: Tu llave no tiene permiso para NCAAM o expiró.")
+            return []
+        else:
+            st.warning(f"Aviso: La API respondió con código {response.status_code}")
+            return []
+    except Exception as e:
+        st.error(f"Error de conexión: {e}")
         return []
 
-st.title("⚽ IA Deportiva en Vivo")
-st.write(f"Datos actualizados: {datetime.now().strftime('%H:%M:%S')}")
+# --- INTERFAZ PRINCIPAL ---
+st.title("🏀 IA Predictora NCAAM")
+st.subheader(f"Jornada: {datetime.now().strftime('%d/%m/%Y')}")
 
-if st.button("📡 ACTIVAR RADAR EN TIEMPO REAL"):
-    partidos_live = obtener_datos_vivos()
-    
-    if not partidos_live:
-        st.info("Buscando partidos en juego... Si no hay en vivo, mostraré los próximos de la liga disponible.")
-        # Fallback a próximos partidos de una liga abierta (Liga de Brasil o USA suelen estar libres)
-        url_next = "https://v3.football.api-sports.io/fixtures?league=71&season=2024&next=5" 
-        partidos_live = requests.get(url_next, headers=HEADERS).json().get('response', [])
-
-    if not partidos_live:
-        st.error("Tu API_KEY gratuita tiene restricciones de temporada. ¿Deseas probar con una liga alternativa?")
-    else:
-        for p in partidos_live:
-            home = p['teams']['home']
-            away = p['teams']['away']
-            status = p['fixture']['status']['short']
-            goals_h = p['goals']['home']
-            goals_a = p['goals']['away']
-            
-            with st.container():
+if st.button("🚀 ANALIZAR PARTIDOS DE HOY"):
+    with st.spinner("Consultando Sportradar..."):
+        partidos = obtener_calendario_ncaa()
+        
+        if not partidos:
+            st.info("No hay partidos programados para hoy en el sistema de Sportradar.")
+        else:
+            for juego in partidos:
+                home = juego['home']['name']
+                away = juego['away']['name']
+                status = juego.get('status', 'Programado')
+                
+                # Diseño de la tarjeta de predicción
                 st.markdown(f"""
                 <div class="card">
-                    <span class="live-badge">{status}</span>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top:10px;">
-                        <div style="text-align: center; width: 40%;">
-                            <img src="{home['logo']}" width="40"><br>
-                            <span class="team-name">{home['name']}</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="width: 40%; text-align: left;">
+                            <span class="team-name">{away}</span><br>
+                            <span style="font-size: 0.8rem; color: #8b949e;">Visitante</span>
                         </div>
-                        <div style="font-size: 1.5rem; font-weight: bold;">{goals_h if goals_h is not None else 0} - {goals_a if goals_a is not None else 0}</div>
-                        <div style="text-align: center; width: 40%;">
-                            <img src="{away['logo']}" width="40"><br>
-                            <span class="team-name">{away['name']}</span>
+                        <div class="vs">VS</div>
+                        <div style="width: 40%; text-align: right;">
+                            <span class="team-name">{home}</span><br>
+                            <span style="font-size: 0.8rem; color: #8b949e;">Local</span>
                         </div>
+                    </div>
+                    <div class="prob-bar"><div class="prob-fill" style="width: 60%;"></div></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                        <span style="color: #ff4b4b;">Prob. {away}: 40%</span>
+                        <span style="color: #3fb950;">Prob. {home}: 60%</span>
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
 
-st.sidebar.warning("Nota: El plan gratuito limita las ligas top en tiempo real.")
+st.sidebar.markdown("---")
+st.sidebar.write("⚡ **Modo:** Sportradar Trial")
+st.sidebar.write(f"📅 **Fecha API:** {FECHA_HOY}")
