@@ -1,72 +1,75 @@
 import streamlit as st
 import requests
-from datetime import datetime
 
-# Configuración Profesional
-st.set_page_config(page_title="IA DEPORTIVA PRO", page_icon="📈")
+# Configuración de la App
+st.set_page_config(page_title="IA DEPORTIVA: MERCADO REAL", page_icon="🎯")
 
 st.markdown("""
     <style>
-    .stApp { background-color: #0e1117; color: white; }
-    .card { background-color: #161b22; padding: 15px; border-radius: 10px; border: 1px solid #30363d; margin-bottom: 10px; text-align: center; }
-    .team { font-weight: bold; color: #fb1; font-size: 1.1rem; }
-    .vs-text { color: #8b949e; margin: 0 10px; }
-    .prob-box { background: #1c2128; padding: 10px; border-radius: 8px; width: 30%; border: 1px solid #3fb950; }
+    .stApp { background-color: #0d1117; color: white; }
+    .card { background-color: #161b22; padding: 15px; border-radius: 12px; border: 1px solid #30363d; margin-bottom: 15px; }
+    .league-tag { background-color: #238636; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; }
+    .team-name { font-size: 1.1rem; font-weight: bold; color: #58a6ff; }
+    .odds-val { font-size: 1.2rem; font-weight: bold; color: #3fb950; }
     </style>
     """, unsafe_allow_html=True)
 
-# LECTURA DE TU NUEVA LLAVE DESDE SECRETS
-# Asegúrate de haber puesto ODDS_API_KEY en los Secrets de Streamlit
-try:
-    API_KEY = st.secrets["ODDS_API_KEY"]
-except:
-    st.error("⚠️ No se encontró la llave 'ODDS_API_KEY' en los Secrets de Streamlit. Sigue el Paso 1.")
-    st.stop()
+# Llave desde Secrets
+API_KEY = st.secrets["ODDS_API_KEY"]
 
-def obtener_predicciones_odds():
-    # Usamos la MLS de EE. UU. (ID: soccer_usa_mls) porque siempre tiene datos gratis
-    url = f"https://api.the-odds-api.com/v4/sports/soccer_usa_mls/odds/?apiKey={API_KEY}&regions=us&markets=h2h"
+def obtener_datos_reales():
+    # Buscamos en todas las ligas de fútbol disponibles (soccer)
+    # El parámetro 'regions=eu' suele dar las ligas más importantes
+    url = f"https://api.the-odds-api.com/v4/sports/soccer/odds/?apiKey={API_KEY}&regions=us,eu&markets=h2h"
     try:
         response = requests.get(url)
         return response.json()
-    except Exception as e:
-        return {"error": str(e)}
+    except:
+        return []
 
-st.title("🤖 IA de Predicciones Deportivas")
-st.subheader(f"Análisis para el: {datetime.now().strftime('%d/%m/%Y')}")
+st.title("🎯 Cuotas Reales del Mercado")
+st.write("Datos extraídos directamente de las casas de apuestas (Sin simulaciones)")
 
-if st.button("📊 ANALIZAR PRÓXIMOS PARTIDOS"):
-    with st.spinner("Consultando The Odds API..."):
-        datos = obtener_predicciones_odds()
+if st.button("🚀 BUSCAR PARTIDOS EN TODAS LAS LIGAS"):
+    with st.spinner("Obteniendo datos reales..."):
+        partidos = obtener_datos_reales()
         
-        if isinstance(datos, dict) and "error" in datos:
-            st.error(f"Error de conexión: {datos['error']}")
-        elif isinstance(datos, dict) and "msg" in datos:
-            st.error(f"Error de API: {datos['msg']}. Verifica tu llave 'aa1b6b...'")
-        elif not datos:
-            st.warning("No hay partidos de la MLS disponibles en este momento. Prueba más tarde.")
+        if isinstance(partidos, dict) and "msg" in partidos:
+            st.error(f"Error: {partidos['msg']}")
+        elif not partidos:
+            st.warning("No se encontraron partidos activos en las ligas permitidas.")
         else:
-            for partido in datos[:12]: # Mostramos los próximos 12 partidos
-                home = partido['home_team']
-                away = partido['away_team']
+            for p in partidos[:20]: # Mostramos los primeros 20 encontrados
+                home_team = p['home_team']
+                away_team = p['away_team']
+                liga = p['sport_title']
                 
-                # Simulamos la "IA" basándonos en las probabilidades de mercado real
-                # (Esta API te daría las cuotas reales para un cálculo profesional)
-                st.markdown(f"""
-                <div class="card">
-                    <div>
-                        <span class="team">{away}</span>
-                        <span class="vs-text">VS</span>
-                        <span class="team">{home}</span>
+                # Buscamos las cuotas del primer proveedor disponible (ej. DraftKings o BetMGM)
+                bookmaker = p['bookmakers'][0] if p['bookmakers'] else None
+                
+                if bookmaker:
+                    markets = bookmaker['markets'][0]['outcomes']
+                    # Organizamos las cuotas: Local, Empate, Visita
+                    odds_dict = {o['name']: o['price'] for o in markets}
+                    
+                    st.markdown(f"""
+                    <div class="card">
+                        <span class="league-tag">{liga}</span>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top:10px;">
+                            <div style="width: 45%; text-align: center;">
+                                <span class="team-name">{home_team}</span><br>
+                                <span class="odds-val">{odds_dict.get(home_team, 'N/A')}</span>
+                            </div>
+                            <div style="color: #8b949e; font-weight: bold;">VS</div>
+                            <div style="width: 45%; text-align: center;">
+                                <span class="team-name">{away_team}</span><br>
+                                <span class="odds-val">{odds_dict.get(away_team, 'N/A')}</span>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; color: #8b949e;">
+                            Empate: <span style="color:white;">{odds_dict.get('Draw', 'N/A')}</span> | Fuente: {bookmaker['title']}
+                        </div>
                     </div>
-                    <div style="display:flex; justify-content:space-around; margin-top:15px; color:#3fb950;">
-                        <div class="prob-box">🏠<br>Gana Local<br><b>55%</b></div>
-                        <div class="prob-box">🤝<br>Empate<br><b>25%</b></div>
-                        <div class="prob-box">🚩<br>Gana Visita<br><b>20%</b></div>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
+                    """, unsafe_allow_html=True)
 
-st.sidebar.markdown("---")
-st.sidebar.write("Proveedor: **The Odds API**")
-st.sidebar.write("Sincronizado: **GitHub & Streamlit**")
+st.sidebar.info("Esta versión muestra cuotas reales. Una cuota menor significa que ese equipo es el favorito.")
