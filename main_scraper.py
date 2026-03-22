@@ -1,14 +1,13 @@
 import scrapper_engine as seg
 
-# Lista de ligas a procesar
-ligas = ["0", "01", "02", "04", "06"]
+# Ligas que queremos trackear
+ids_ligas = ["0", "01", "02", "04", "06"]
 
-for liga in ligas:
-    print(f"🔍 Procesando liga ID: {liga}...")
-    df = seg.scaricaCampionato(liga)
-    
-    if not df.empty:
-        seg.allFromCampionato(df)
-        print(f"✨ Éxito en liga {liga}")
-    else:
-        print(f"⏭️ Saltando liga {liga} (sin datos)")
+print("🚀 Iniciando escaneo NuviCore...")
+
+for l_id in ids_ligas:
+    df_resultado = seg.scaricaCampionato(l_id)
+    if not df_resultado.empty:
+        seg.allFromCampionato(df_resultado)
+
+print("🏁 Proceso finalizado.")
