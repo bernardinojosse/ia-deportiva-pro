@@ -1,13 +1,13 @@
+# Archivo: main_scraper.py
 import scrapper_engine as seg
 
-# Ligas que queremos trackear
-ids_ligas = ["0", "01", "02", "04", "06"]
+# Ligas que queremos actualizar
+ligas = ["0", "01", "02", "06"]
 
-print("🚀 Iniciando escaneo NuviCore...")
+print("🚀 Iniciando Raspador NuviCore...")
 
-for l_id in ids_ligas:
-    df_resultado = seg.scaricaCampionato(l_id)
-    if not df_resultado.empty:
-        seg.allFromCampionato(df_resultado)
+for liga_id in ligas:
+    print(f"--- Procesando ID: {liga_id} ---")
+    seg.scaricaCampionato(liga_id)
 
-print("🏁 Proceso finalizado.")
+print("🏁 Proceso de raspado finalizado.")
