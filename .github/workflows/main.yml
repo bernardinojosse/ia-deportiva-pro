@@ -2,8 +2,9 @@ name: Escaneo Automatico NuviCore
 
 on:
   schedule:
+    # Se ejecuta cada 3 horas (00:00, 03:00, 06:00, etc. UTC)
     - cron: '0 */3 * * *'
-  workflow_dispatch:
+  workflow_dispatch: # Permite ejecutarlo manualmente desde la pestaña Actions
 
 permissions:
   contents: write
@@ -19,21 +20,20 @@ jobs:
         with:
           python-version: '3.9'
           
-      - name: Instalacion
+      - name: Instalar Librerias
         run: pip install pandas requests
 
-      - name: Ejecutar Bot
+      - name: Ejecutar Bot de Analisis
         env:
-          # AHORA SÍ: Conectado al nombre exacto de tu Secret
-          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }} 
-        run: |
-          python main_scraper.py
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          AF_API_KEY: ${{ secrets.AF_API_KEY }}
+        run: python main_scraper.py
         
-      - name: Guardar en GitHub
+      - name: Guardar Resultados en Repo
         run: |
           git config --global user.name "NuviCore-Bot"
           git config --global user.email "bot@nuvicore.com"
           mkdir -p campionati
-          git add campionati/*.csv || echo "Sin cambios"
-          git commit -m "Update cuotas $(date)" || echo "Nada nuevo"
+          git add campionati/*.csv
+          git commit -m "Update automatico de cuotas y picks: $(date)" || echo "Sin cambios"
           git push origin main
