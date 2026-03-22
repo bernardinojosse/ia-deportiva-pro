@@ -11,17 +11,14 @@ st.markdown("""
         background-color: #1c2128;
         border-radius: 15px;
         padding: 15px;
-        margin-bottom: 15px;
-        border: 1px solid #00ff88;
+        border: 1px solid #30363d;
+        margin-bottom: 5px;
     }
-    .pick-box {
-        background-color: #00ff88;
-        color: black;
-        padding: 8px;
-        border-radius: 5px;
+    .pick-header {
+        color: #00ff88;
         font-weight: bold;
         text-align: center;
-        margin-top: 10px;
+        font-size: 1.1rem;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -37,20 +34,39 @@ path = f"campionati/campionato{id_l}.csv"
 if os.path.exists(path):
     try:
         df = pd.read_csv(path)
-        if df.empty or len(df.columns) < 2:
-            st.info("🔄 El bot está cargando nuevos partidos. Espera un momento...")
-        else:
-            for _, row in df.iterrows():
+        for _, row in df.iterrows():
+            with st.container():
+                # Caja principal del partido
                 st.markdown(f"""
                 <div class="card">
-                    <div style="font-size: 1.1rem; font-weight:bold;">{row['match']}</div>
-                    <div style="color: #8b949e; font-size: 0.9rem; margin: 8px 0;">
-                        Cuotas: L {row['quota1']} | V {row['quota2']}
-                    </div>
-                    <div class="pick-box">{row['pick']}</div>
+                    <div style="font-size: 1.2rem; font-weight:bold;">⚽ {row['match']}</div>
+                    <div style="color: #8b949e;">L: {row['quota1']} | V: {row['quota2']}</div>
                 </div>
                 """, unsafe_allow_html=True)
+                
+                # Desplegable interactivo
+                with st.expander(f"🎯 RECOMENDACIÓN: {row['pick']}"):
+                    q1, q2 = row['quota1'], row['quota2']
+                    
+                    # Lógica dinámica para la explicación
+                    if q1 < 1.65:
+                        pros = "Local dominante, racha positiva en casa."
+                        contras = "Exceso de confianza o rotación de plantilla."
+                        sug = "Hándicap Asiático -1 para mejorar momio."
+                    elif q2 < 1.65:
+                        pros = "Visitante con mejor plantilla y xG alto."
+                        contras = "Factor campo en contra y fatiga de viaje."
+                        sug = "Apuesta directa a favor del visitante."
+                    else:
+                        pros = "Equipos equilibrados, alta probabilidad de gol."
+                        contras = "Defensas cerradas podrían forzar un 0-0."
+                        sug = "Baja de 3.5 goles o Ambos Anotan."
+
+                    st.markdown(f"**✅ Pros:** {pros}")
+                    st.markdown(f"**❌ Contras:** {contras}")
+                    st.info(f"💡 **Sugerencia:** {sug}")
+                st.divider()
     except:
         st.error("Sincronizando base de datos...")
 else:
-    st.warning("No hay partidos detectados para esta liga hoy.")
+    st.warning("No hay datos disponibles. El bot está escaneando.")
