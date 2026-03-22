@@ -2,8 +2,12 @@ import streamlit as st
 import pandas as pd
 import os
 
-# Configuración de la página
+# Configuración de la página (Añadimos el logo también aquí en la pestaña del navegador)
 st.set_page_config(page_title="NuviCore VIP", layout="centered", page_icon="🛡️")
+
+# --- MOSTRAR EL LOGO ---
+# Usamos st.image para poner el logo centrado arriba
+st.image("https://i.imgur.com/8zX0sXn.png", use_container_width=True)
 
 # --- ESTILOS PERSONALIZADOS ---
 st.markdown("""
@@ -51,7 +55,8 @@ tab1, tab2, tab3 = st.tabs(["⚽ Picks Hoy", "💎 VIP Premium", "⚖️ Info Le
 
 # --- PESTAÑA 1: PICKS GRATUITOS ---
 with tab1:
-    st.title("🛡️ NuviCore Intelligence")
+    # Quitamos el st.title("NuviCore") porque ya tenemos el logo
+    st.divider() 
     
     ligas = {"01": "🇲🇽 Liga MX", "06": "🇪🇸 La Liga", "0": "🇮🇹 Serie A", "02": "🇪🇺 Champions"}
     seleccion = st.selectbox("Seleccionar Mercado:", list(ligas.values()))
@@ -81,7 +86,7 @@ with tab1:
     else:
         st.warning("No hay partidos detectados para esta liga hoy.")
 
-# --- PESTAÑA 2: PREMIUM (CON TU PAYPAL) ---
+# --- PESTAÑA 2: PREMIUM ---
 with tab2:
     st.title("🚀 Acceso Exclusivo")
     
@@ -111,7 +116,7 @@ with tab2:
     st.subheader("¿Dudas o Pago por Transferencia?")
     # Recuerda cambiar el número 5216771316056 por tu número real
     wa_link = "https://wa.me/521XXXXXXXXXX?text=Hola%20Jose,%20acabo%20de%20ver%20la%20App%20NuviCore%20y%20quiero%20el%20Plan%20Premium"
-    st.link_button("💬 Hablar con Jose (Soporte)", wa_link, use_container_width=True)
+    st.link_button("💬 Hablar con Soporte", wa_link, use_container_width=True)
 
 # --- PESTAÑA 3: LEGAL ---
 with tab3:
