@@ -4,16 +4,15 @@ import os
 
 st.set_page_config(page_title="NuviCore VIP", layout="centered")
 
-# Estilo visual para que parezca una App Pro
 st.markdown("""
     <style>
     .stApp { background-color: #0e1117; color: white; }
     .card {
         background-color: #1c2128;
         border-radius: 15px;
-        padding: 20px;
+        padding: 15px;
         margin-bottom: 15px;
-        border-left: 5px solid #00ff88;
+        border: 1px solid #00ff88;
     }
     .pick-box {
         background-color: #00ff88;
@@ -29,30 +28,29 @@ st.markdown("""
 
 st.title("🛡️ NuviCore Intelligence")
 
-# Mapeo de ligas
 ligas = {"01": "Liga MX", "02": "Champions", "06": "La Liga", "0": "Serie A"}
-seleccion = st.selectbox("Selecciona la Liga", list(ligas.values()))
-id_liga = [k for k, v in ligas.items() if v == seleccion][0]
+sel = st.selectbox("Selecciona la Liga", list(ligas.values()))
+id_l = [k for k, v in ligas.items() if v == sel][0]
 
-file_path = f"campionati/campionato{id_liga}.csv"
+path = f"campionati/campionato{id_l}.csv"
 
-if os.path.exists(file_path):
+if os.path.exists(path):
     try:
-        df = pd.read_csv(file_path)
-        if df.empty:
-            st.warning("🔄 El bot está actualizando los datos. Regresa en 5 minutos.")
+        df = pd.read_csv(path)
+        if df.empty or len(df.columns) < 2:
+            st.info("🔄 El bot está cargando nuevos partidos. Espera un momento...")
         else:
             for _, row in df.iterrows():
                 st.markdown(f"""
                 <div class="card">
-                    <div style="font-size: 1.2rem;">⚽ {row['match']}</div>
-                    <div style="color: #8b949e; margin: 10px 0;">
-                        Casa: {row['bookie']} | <b>L: {row['quota1']} - V: {row['quota2']}</b>
+                    <div style="font-size: 1.1rem; font-weight:bold;">{row['match']}</div>
+                    <div style="color: #8b949e; font-size: 0.9rem; margin: 8px 0;">
+                        Cuotas: L {row['quota1']} | V {row['quota2']}
                     </div>
                     <div class="pick-box">{row['pick']}</div>
                 </div>
                 """, unsafe_allow_html=True)
-    except Exception as e:
-        st.error("Error al leer los datos. El bot está trabajando...")
+    except:
+        st.error("Sincronizando base de datos...")
 else:
-    st.info(f"Todavía no hay datos para {seleccion}. Ejecuta el bot en GitHub Actions.")
+    st.warning("No hay partidos detectados para esta liga hoy.")
