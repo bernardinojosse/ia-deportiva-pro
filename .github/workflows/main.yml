@@ -5,27 +5,31 @@ on:
     - cron: '0 */3 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   run-scraper:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       
-      - name: Configurar Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
           
-      - name: Instalar Librerias
+      - name: Instalacion
         run: pip install pandas requests beautifulsoup4 lxml
         
-      - name: Ejecutar Scraper
+      - name: Ejecutar Bot
         run: python main_scraper.py
         
-      - name: Subir Cambios a GitHub
+      - name: Guardar en GitHub
         run: |
           git config --global user.name "NuviCore-Bot"
           git config --global user.email "bot@nuvicore.com"
-          git add campionati/*.csv
-          git commit -m "Actualización automática de cuotas" || echo "Sin cambios detectados"
-          git push || echo "No hay cambios para subir"
+          mkdir -p campionati
+          git add campionati/*.csv || echo "No hay archivos nuevos"
+          git commit -m "Update cuotas $(date)" || echo "Nada que actualizar"
+          git push origin main
