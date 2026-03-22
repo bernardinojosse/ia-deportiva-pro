@@ -4,22 +4,22 @@ import os
 
 st.set_page_config(page_title="NuviCore VIP", layout="centered")
 
+# Estilo visual para que parezca una App Pro
 st.markdown("""
     <style>
     .stApp { background-color: #0e1117; color: white; }
     .card {
         background-color: #1c2128;
         border-radius: 15px;
-        padding: 18px;
+        padding: 20px;
         margin-bottom: 15px;
-        border: 1px solid #00ff88;
-        box-shadow: 0px 4px 10px rgba(0,255,136,0.1);
+        border-left: 5px solid #00ff88;
     }
     .pick-box {
         background-color: #00ff88;
-        color: #000;
-        padding: 10px;
-        border-radius: 8px;
+        color: black;
+        padding: 8px;
+        border-radius: 5px;
         font-weight: bold;
         text-align: center;
         margin-top: 10px;
@@ -29,30 +29,30 @@ st.markdown("""
 
 st.title("🛡️ NuviCore Intelligence")
 
-menu_ligas = {"01": "🇲🇽 Liga MX", "02": "🇪🇺 Champions", "06": "🇪🇸 La Liga", "0": "🇮🇹 Serie A"}
-seleccion = st.selectbox("Seleccionar Mercado:", list(menu_ligas.values()))
-id_l = [k for k, v in menu_ligas.items() if v == seleccion][0]
+# Mapeo de ligas
+ligas = {"01": "Liga MX", "02": "Champions", "06": "La Liga", "0": "Serie A"}
+seleccion = st.selectbox("Selecciona la Liga", list(ligas.values()))
+id_liga = [k for k, v in ligas.items() if v == seleccion][0]
 
-path_csv = f"campionati/campionato{id_l}.csv"
+file_path = f"campionati/campionato{id_liga}.csv"
 
-if os.path.exists(path_csv):
+if os.path.exists(file_path):
     try:
-        df = pd.read_csv(path_csv)
+        df = pd.read_csv(file_path)
         if df.empty:
-            st.info("🔄 Los datos se están actualizando. Reintenta en 1 minuto.")
+            st.warning("🔄 El bot está actualizando los datos. Regresa en 5 minutos.")
         else:
             for _, row in df.iterrows():
-                with st.container():
-                    st.markdown(f"""
-                    <div class="card">
-                        <div style="font-size: 1.1rem; font-weight: bold;">{row['match']}</div>
-                        <div style="color: #8b949e; font-size: 0.9rem; margin-top:5px;">
-                            Casa: {row['bookie']} | <b>L: {row['quota1']} - V: {row['quota2']}</b>
-                        </div>
-                        <div class="pick-box">{row['pick']}</div>
+                st.markdown(f"""
+                <div class="card">
+                    <div style="font-size: 1.2rem;">⚽ {row['match']}</div>
+                    <div style="color: #8b949e; margin: 10px 0;">
+                        Casa: {row['bookie']} | <b>L: {row['quota1']} - V: {row['quota2']}</b>
                     </div>
-                    """, unsafe_allow_html=True)
-    except:
-        st.error("⌛ Sincronizando base de datos...")
+                    <div class="pick-box">{row['pick']}</div>
+                </div>
+                """, unsafe_allow_html=True)
+    except Exception as e:
+        st.error("Error al leer los datos. El bot está trabajando...")
 else:
-    st.warning("Aún no hay datos para esta liga. El bot los generará en su próximo ciclo.")
+    st.info(f"Todavía no hay datos para {seleccion}. Ejecuta el bot en GitHub Actions.")
