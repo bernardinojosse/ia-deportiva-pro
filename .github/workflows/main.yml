@@ -9,20 +9,26 @@ jobs:
   run-bot:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - setup-python:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-      - name: Deps
+
+      - name: Install dependencies
         run: pip install pandas requests
-      - name: Scrape
+
+      - name: Run Scraper
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: python main_scraper.py
-      - name: Save
+
+      - name: Commit and Push changes
         run: |
-          git config --local user.name "Bot"
+          git config --local user.name "NuviCore-Bot"
+          git config --local user.email "bot@nuvicore.com"
           git add campionati/*.csv
-          git commit -m "Update" || exit 0
+          git commit -m "Update cuotas $(date)" || echo "No hay cambios para subir"
           git push
