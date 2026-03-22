@@ -20,16 +20,20 @@ jobs:
           python-version: '3.9'
           
       - name: Instalacion
-        run: pip install pandas requests beautifulsoup4 lxml
-        
+        run: pip install pandas requests
+
       - name: Ejecutar Bot
-        run: python main_scraper.py
+        env:
+          # AHORA SÍ: Conectado al nombre exacto de tu Secret
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }} 
+        run: |
+          python main_scraper.py
         
       - name: Guardar en GitHub
         run: |
           git config --global user.name "NuviCore-Bot"
           git config --global user.email "bot@nuvicore.com"
           mkdir -p campionati
-          git add campionati/*.csv || echo "No hay archivos nuevos"
-          git commit -m "Update cuotas $(date)" || echo "Nada que actualizar"
+          git add campionati/*.csv || echo "Sin cambios"
+          git commit -m "Update cuotas $(date)" || echo "Nada nuevo"
           git push origin main
