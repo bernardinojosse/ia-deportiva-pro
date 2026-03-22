@@ -9,53 +9,50 @@ st.markdown("""
     .stApp { background-color: #0e1117; color: white; }
     .card {
         background-color: #1c2128;
-        border-radius: 12px;
-        padding: 20px;
+        border-radius: 15px;
+        padding: 18px;
         margin-bottom: 15px;
-        border: 1px solid #30363d;
-        border-left: 5px solid #00ff88;
+        border: 1px solid #00ff88;
+        box-shadow: 0px 4px 10px rgba(0,255,136,0.1);
     }
     .pick-box {
         background-color: #00ff88;
-        color: black;
+        color: #000;
         padding: 10px;
         border-radius: 8px;
-        margin-top: 10px;
         font-weight: bold;
         text-align: center;
+        margin-top: 10px;
     }
     </style>
     """, unsafe_allow_html=True)
 
-st.title("🛡️ NuviCore Unit")
+st.title("🛡️ NuviCore Intelligence")
 
-ligas = {"01": "Liga MX", "02": "Champions", "06": "La Liga", "0": "Serie A"}
-seleccion = st.selectbox("Seleccionar Mercado", list(ligas.values()))
-id_liga = [k for k, v in ligas.items() if v == seleccion][0]
+menu_ligas = {"01": "🇲🇽 Liga MX", "02": "🇪🇺 Champions", "06": "🇪🇸 La Liga", "0": "🇮🇹 Serie A"}
+seleccion = st.selectbox("Seleccionar Mercado:", list(menu_ligas.values()))
+id_l = [k for k, v in menu_ligas.items() if v == seleccion][0]
 
-file_path = f"campionati/campionato{id_liga}.csv"
+path_csv = f"campionati/campionato{id_l}.csv"
 
-if os.path.exists(file_path):
+if os.path.exists(path_csv):
     try:
-        df = pd.read_csv(file_path)
+        df = pd.read_csv(path_csv)
         if df.empty:
-            st.warning("Esperando actualización de datos del bot...")
+            st.info("🔄 Los datos se están actualizando. Reintenta en 1 minuto.")
         else:
             for _, row in df.iterrows():
                 with st.container():
                     st.markdown(f"""
                     <div class="card">
-                        <div style="font-size: 1.2rem; margin-bottom: 10px;">⚽ {row['match']}</div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <span>Casa: {row.get('bookie', 'Global')}</span>
-                            <span style="color:#58a6ff;">L: {row['quota1']} | V: {row['quota2']}</span>
+                        <div style="font-size: 1.1rem; font-weight: bold;">{row['match']}</div>
+                        <div style="color: #8b949e; font-size: 0.9rem; margin-top:5px;">
+                            Casa: {row['bookie']} | <b>L: {row['quota1']} - V: {row['quota2']}</b>
                         </div>
-                        <div class="pick-box">
-                            {row.get('pick', 'Analizando...')}
-                        </div>
+                        <div class="pick-box">{row['pick']}</div>
                     </div>
                     """, unsafe_allow_html=True)
-    except Exception as e:
-        st.error("Los datos se están sincronizando. Recarga en un momento.")
+    except:
+        st.error("⌛ Sincronizando base de datos...")
 else:
-    st.info(f"No hay datos para {seleccion}. Inicia el bot en GitHub Actions.")
+    st.warning("Aún no hay datos para esta liga. El bot los generará en su próximo ciclo.")
