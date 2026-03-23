@@ -5,124 +5,240 @@ import requests
 from datetime import datetime
 import pytz
 
-# --- CONFIGURACIÓN DE INTERFAZ PREMIUM ---
-st.set_page_config(page_title="NUVI-CORE FULL", layout="wide", initial_sidebar_state="collapsed")
+# --- CONFIGURACIÓN DE PÁGINA (ESTILO APPLE) ---
+st.set_page_config(page_title="NuviCore Sports", layout="wide", initial_sidebar_state="collapsed")
 
-def apply_custom_style():
-    st.markdown("""
-        <style>
-        .main { background-color: #0e1117; color: #ffffff; }
-        .match-card { 
-            background: #1f2937; border-radius: 12px; padding: 15px; 
-            margin-bottom: 15px; border-left: 5px solid #3b82f6;
-        }
-        .high-value { border-left: 5px solid #10b981 !important; background: #064e3b !important; }
-        .metric-box { text-align: center; padding: 10px; background: #111827; border-radius: 8px; }
-        </style>
+# Fondo negro profundo y tipografía limpia
+st.markdown("""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    
+    html, body, [class*="css"] {
+        font-family: 'Inter', sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+    }
+    
+    .main { background-color: #000000; }
+    
+    /* Ocultar elementos estándar de Streamlit */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
+    /* Contenedor Principal de la App */
+    .app-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 10px;
+    }
+    
+    /* Header (Clon Apple Sports) */
+    .apple-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        margin-bottom: 20px;
+    }
+    .app-title {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    .app-title span { color: #fff; }
+    
+    .my-teams-btn {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    
+    /* Selector de Tiempo (Tabs Clon) */
+    .stTabs [data-baseweb="tab-list"] {
+        background-color: transparent;
+        border-bottom: none;
+        gap: 20px;
+        justify-content: center;
+    }
+    .stTabs [data-baseweb="tab"] {
+        background-color: transparent;
+        color: #94a3b8;
+        font-weight: 600;
+        border: none;
+        padding: 10px 0;
+    }
+    .stTabs [data-baseweb="tab"][aria-selected="true"] {
+        color: #ffffff;
+        border-bottom: 2px solid #ffffff;
+    }
+    
+    /* Tarjeta de Partido (Clon Apple Sports) */
+    .match-card {
+        background-color: #1C1C1E;
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: background-color 0.2s;
+    }
+    .match-card:hover { background-color: #2C2C2E; }
+    
+    .team-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 40%;
+    }
+    .team-logo { width: 30px; height: 30px; object-fit: contain; }
+    .team-name { font-weight: 600; font-size: 16px; }
+    .score { font-size: 28px; font-weight: 700; color: #fff; }
+    .score.loser { color: #94a3b8; } /* Gris si está perdiendo */
+    
+    .status-section {
+        text-align: center;
+        width: 20%;
+        color: #94a3b8;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    
+    /* Sección 'Más Tarde Hoy' */
+    .section-divider {
+        color: #94a3b8;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 25px 0 10px 0;
+        padding-left: 5px;
+    }
+    
+    /* Info de Apuesta Oculta (Analytics) */
+    .bet-info {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        margin-top: 10px;
+        padding-top: 10px;
+        font-size: 11px;
+        color: #10b981;
+        text-align: center;
+    }
+    </style>
     """, unsafe_allow_html=True)
 
-apply_custom_style()
+# --- INICIO DE LA APP (DENTRO DEL CONTENEDOR) ---
+st.markdown('<div class="app-container">', unsafe_allow_html=True)
+
+# Header Clon
+st.markdown("""
+    <div class="apple-header">
+        <div class="app-title">Nuvi<span>Core</span></div>
+        <button class="my-teams-btn">★ Mis Ligas</button>
+    </div>
+""", unsafe_allow_html=True)
 
 # --- MOTOR DE DATOS REALES ---
-class LiveEngine:
+class AppleSportsEngine:
     def __init__(self):
-        # CORRECCIÓN DE LLAVES SEGÚN TU CAPTURA
         self.fb_key = st.secrets.get("AF_API_KEY")
         self.odds_key = st.secrets.get("ODDS_API_KEY")
         self.mx_tz = pytz.timezone('America/Mexico_City')
-
-        # Verificación de Seguridad
+        
         if not self.fb_key or not self.odds_key:
-            st.error("❌ ERROR DE SECRETS: Configura AF_API_KEY y ODDS_API_KEY en Streamlit Cloud.")
-            st.info("Ve a Settings > Secrets en tu dashboard de Streamlit y pega las llaves ahí.")
+            st.error("🔑 Error de Credenciales en Secrets")
             st.stop()
 
     def get_mx_time(self, utc_str):
-        """Convierte a hora de CDMX"""
-        utc_dt = datetime.fromisoformat(utc_str.replace('Z', '+00:00'))
-        local_dt = utc_dt.astimezone(self.mx_tz)
-        day = "Hoy" if local_dt.date() == datetime.now(self.mx_tz).date() else local_dt.strftime('%d/%m')
-        return f"{day} @ {local_dt.strftime('%H:%M')}h"
+        dt = datetime.fromisoformat(utc_str.replace('Z', '+00:00')).astimezone(self.mx_tz)
+        return dt.strftime('%H:%M')
 
-    def fetch_live_odds(self, sport="soccer_mexico_ligamx"):
-        """Datos reales de The Odds API"""
-        url = f"https://api.the-odds-api.com/v4/sports/{sport}/odds/"
-        params = {'apiKey': self.odds_key, 'regions': 'us,eu', 'markets': 'h2h', 'oddsFormat': 'decimal'}
-        try:
-            res = requests.get(url, params=params)
-            return res.json()
-        except:
-            return []
+engine = AppleSportsEngine()
 
-# --- MOTOR CUANTITATIVO (MONTE CARLO) ---
-def run_monte_carlo(home_xg, away_xg):
-    # Genera 1000 escenarios basados en xG real
-    h_sim = np.random.poisson(home_xg, 1000)
-    a_sim = np.random.poisson(away_xg, 1000)
-    prob_1 = np.sum(h_sim > a_sim) / 1000
-    return prob_1
+# Selector de Tiempo (Tabs)
+tabs = st.tabs(["Ayer", "Hoy", "Próximos"])
 
-def calculate_kelly(prob, odds, bankroll):
-    if odds <= 1 or prob <= (1/odds): return 0
-    b = odds - 1
-    f = (b * prob - (1 - prob)) / b
-    return f * bankroll * 0.2 # Fracción de seguridad (20%)
-
-# --- APP PRINCIPAL ---
-def main():
-    st.title("🦅 NUVI-CORE | Live Intelligence")
-    engine = LiveEngine()
+with tabs[1]: # Hoy
     
-    # Sidebar de Control
-    st.sidebar.header("Configuración")
-    bankroll = st.sidebar.number_input("Bankroll ($MXN)", value=1000)
-    league = st.sidebar.selectbox("Liga", ["soccer_mexico_ligamx", "soccer_spain_la_liga", "soccer_uefa_champs_league"])
+    # --- DATOS DE PRUEBA (MOCK) INTEGRADOS EN LA UI ---
+    # En producción, aquí haríamos fetch_live_odds()
+    matches_today = [
+        {
+            "home": "América", "away": "Chivas", "time": "2026-03-23T03:00:00Z",
+            "home_logo": "https://media.api-sports.io/football/teams/2287.png",
+            "away_logo": "https://media.api-sports.io/football/teams/2289.png",
+            "home_score": 2, "away_score": 1, "status": "2nd 88:15", "prob_real": 0.65, "odd": 1.90
+        },
+        {
+            "home": "Real Madrid", "away": "Barcelona", "time": "2026-03-23T20:00:00Z",
+            "home_logo": "https://media.api-sports.io/football/teams/541.png",
+            "away_logo": "https://media.api-sports.io/football/teams/529.png",
+            "home_score": 1, "away_score": 1, "status": "HT", "prob_real": 0.48, "odd": 2.20
+        }
+    ]
 
-    if st.button('🚀 ANALIZAR MERCADOS EN VIVO'):
-        data = engine.fetch_live_odds(league)
+    for m in matches_today:
+        home_loser_class = "loser" if m['home_score'] < m['away_score'] else ""
+        away_loser_class = "loser" if m['away_score'] < m['home_score'] else ""
         
-        if not data:
-            st.warning("No se encontraron partidos activos o las llaves son incorrectas.")
-            return
-
-        for match in data:
-            home = match['home_team']
-            away = match['away_team']
-            time_display = engine.get_mx_time(match['commence_time'])
-            
-            # Obtener cuota de la primera casa disponible
-            try:
-                outcomes = match['bookmakers'][0]['markets'][0]['outcomes']
-                home_odd = next(o['price'] for o in outcomes if o['name'] == home)
-            except: continue
-
-            # --- LÓGICA DE VALOR ---
-            # En producción esto conectaría a API-Football para xG real
-            # Usamos un xG base para la lógica de visualización
-            prob_real = run_monte_carlo(1.7, 1.2) 
-            edge = prob_real - (1 / home_odd)
-            is_high_value = edge > 0.05
-
-            # --- RENDERIZADO ---
-            card_class = "match-card high-value" if is_high_value else "match-card"
-            
-            st.markdown(f"""
-                <div class="{card_class}">
-                    <div style="display: flex; justify-content: space-between;">
-                        <b>{home} vs {away}</b>
-                        <span style="color: #9ca3af;">{time_display}</span>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 15px;">
-                        <div class="metric-box"><small>Cuota</small><br><b>{home_odd}</b></div>
-                        <div class="metric-box"><small>Prob. Real</small><br><b>{prob_real*100:.1f}%</b></div>
-                        <div class="metric-box"><small>Ventaja</small><br><b>{edge*100:.1f}%</b></div>
-                    </div>
+        st.markdown(f"""
+            <div class="match-card">
+                <div class="team-section">
+                    <img src="{m['home_logo']}" class="team-logo">
+                    <div class="team-name">{m['home']}</div>
                 </div>
-            """, unsafe_allow_html=True)
+                <div class="score {home_loser_class}">{m['home_score']}</div>
+                
+                <div class="status-section">{m['status']}</div>
+                
+                <div class="score {away_loser_class}">{m['away_score']}</div>
+                <div class="team-section" style="justify-content: flex-end;">
+                    <div class="team-name">{m['away']}</div>
+                    <img src="{m['away_logo']}" class="team-logo">
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+        
+        # Lógica Cuantitativa Oculta Elegante
+        edge = m['prob_real'] - (1/m['odd'])
+        if edge > 0.05:
+            st.markdown(f'<div class="bet-info">💎 Sugerencia: Gana {m["home"]} (Prob: {m["prob_real"]*100:.0f}%, Cuota: {m["odd"]})</div>', unsafe_allow_html=True)
 
-            if is_high_value:
-                stake = calculate_kelly(prob_real, home_odd, bankroll)
-                st.success(f"💎 PICK DETECTADO: Sugerencia de apuesta ${stake:.2f} MXN")
+    # --- SECCIÓN MÁS TARDE HOY ---
+    st.markdown('<div class="section-divider">MÁS TARDE HOY</div>', unsafe_allow_html=True)
+    
+    upcoming_today = [
+        {
+            "home": "Man City", "away": "Liverpool", "time": "2026-03-23T14:30:00Z",
+            "home_logo": "https://media.api-sports.io/football/teams/50.png",
+            "away_logo": "https://media.api-sports.io/football/teams/40.png"
+        }
+    ]
+    
+    for m in upcoming_today:
+        time_mx = engine.get_mx_time(m['time'])
+        st.markdown(f"""
+            <div class="match-card">
+                <div class="team-section">
+                    <img src="{m['home_logo']}" class="team-logo">
+                    <div class="team-name">{m['home']}</div>
+                </div>
+                <div class="status-section" style="font-size: 16px; color: #fff; font-weight: 700;">{time_mx}</div>
+                <div class="team-section" style="justify-content: flex-end;">
+                    <div class="team-name">{m['away']}</div>
+                    <img src="{m['away_logo']}" class="team-logo">
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
 
-if __name__ == "__main__":
-    main()
+# Cerrar Contenedor Principal
+st.markdown('</div>', unsafe_allow_html=True)
