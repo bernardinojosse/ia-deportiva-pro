@@ -4,13 +4,24 @@ import os
 
 ODDS_KEY = os.getenv('ODDS_API_KEY')
 
-def generar_pick_dinamico(q1, q2):
-    if not q1 or not q2: return "⚠️ ANALIZANDO..."
-    if q1 <= 1.55: return "🔥 LOCAL FAVORITO"
-    if q2 <= 1.55: return "🚀 VISITA FAVORITA"
-    p1, p2 = 1/q1, 1/q2
-    if abs(p1 - p2) < 0.10: return "⚖️ EMPATE / AMBOS ANOTAN"
-    return "✅ LOCAL FAVORITO" if q1 < q2 else "✅ VISITA FAVORITA"
+def analizar_valor(q1, q2):
+    # Calculamos probabilidad implícita de la casa de apuestas
+    p1 = (1 / q1) * 100
+    p2 = (1 / q2) * 100
+    
+    # Lógica de Pick y Confianza
+    if q1 <= 1.50:
+        return "🔥 LOCAL IMPERDIBLE", "ALTA", round(p1)
+    if q2 <= 1.50:
+        return "🚀 VISITA IMPERDIBLE", "ALTA", round(p2)
+    
+    if abs(p1 - p2) < 10:
+        return "⚖️ EMPATE / AMBOS ANOTAN", "MEDIA", 33
+    
+    if q1 < q2:
+        return "✅ LOCAL FAVORITO", "MEDIA", round(p1)
+    else:
+        return "✅ VISITA FAVORITA", "MEDIA", round(p2)
 
 def scaricaCampionato(id_liga):
     deportes = {
@@ -26,8 +37,6 @@ def scaricaCampionato(id_liga):
     try:
         response = requests.get(url)
         data = response.json()
-        if not isinstance(data, list): return pd.DataFrame()
-
         partidos = []
         for evento in data:
             if not evento.get('bookmakers'): continue
@@ -36,11 +45,17 @@ def scaricaCampionato(id_liga):
                 h, a = evento['home_team'], evento['away_team']
                 q1 = next(o['price'] for o in outcomes if o['name'] == h)
                 q2 = next(o['price'] for o in outcomes if o['name'] == a)
+                
+                # Obtenemos análisis profundo
+                pick, confianza, prob = analizar_valor(q1, q2)
+                
                 partidos.append({
                     "match": f"{h} vs {a}", 
                     "quota1": q1, "quota2": q2,
                     "bookie": evento['bookmakers'][0]['title'],
-                    "pick": generar_pick_dinamico(q1, q2)
+                    "pick": pick,
+                    "confidence": confianza,
+                    "probability": prob
                 })
             except: continue
 
