@@ -1,20 +1,19 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Hellas Verona vs Fiorentina,4.1,2.05,FanDuel,✅ VISITA FAVORITA,MEDIA,49
-Lazio vs Parma,1.83,4.7,FanDuel,✅ LOCAL FAVORITO,MEDIA,55
+Lazio vs Parma,1.95,4.5,FanDuel,✅ LOCAL FAVORITO,MEDIA,51
 Cremonese vs Bologna,3.5,2.15,FanDuel,✅ VISITA FAVORITA,MEDIA,47
-Pisa vs Torino,3.0,2.55,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Inter Milan vs AS Roma,1.65,5.7,FanDuel,✅ LOCAL FAVORITO,MEDIA,61
+Pisa vs Torino,3.2,2.4,FanDuel,✅ VISITA FAVORITA,MEDIA,42
+Inter Milan vs AS Roma,1.65,5.5,FanDuel,✅ LOCAL FAVORITO,MEDIA,61
 Udinese vs Como,5.6,1.65,FanDuel,✅ VISITA FAVORITA,MEDIA,61
 Lecce vs Atalanta BC,5.1,1.68,BetRivers,✅ VISITA FAVORITA,MEDIA,60
-Juventus vs Genoa,1.31,8.5,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,76
+Juventus vs Genoa,1.34,8.5,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,75
 Napoli vs AC Milan,2.5,3.1,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-AS Roma vs Pisa,1.33,10.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,75
-Cagliari vs Cremonese,2.08,3.7,BetRivers,✅ LOCAL FAVORITO,MEDIA,48
-Torino vs Hellas Verona,1.89,4.3,BetRivers,✅ LOCAL FAVORITO,MEDIA,53
-AC Milan vs Udinese,1.35,9.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,74
-Atalanta BC vs Juventus,2.9,2.35,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Genoa vs Sassuolo,2.14,3.45,BetRivers,✅ LOCAL FAVORITO,MEDIA,47
-Parma vs Napoli,5.75,1.6,BetRivers,✅ VISITA FAVORITA,MEDIA,62
+AS Roma vs Pisa,1.34,9.0,Bovada,🔥 LOCAL IMPERDIBLE,ALTA,75
+Cagliari vs Cremonese,2.31,3.45,Bovada,✅ LOCAL FAVORITO,MEDIA,43
+Torino vs Hellas Verona,1.83,4.5,Bovada,✅ LOCAL FAVORITO,MEDIA,55
+AC Milan vs Udinese,1.37,8.0,Bovada,🔥 LOCAL IMPERDIBLE,ALTA,73
+Atalanta BC vs Juventus,3.1,2.23,Bovada,✅ VISITA FAVORITA,MEDIA,45
+Genoa vs Sassuolo,2.14,3.5,Bovada,✅ LOCAL FAVORITO,MEDIA,47
+Parma vs Napoli,5.45,1.67,Bovada,✅ VISITA FAVORITA,MEDIA,60
 Bologna vs Lecce,1.56,6.1,BetRivers,✅ LOCAL FAVORITO,MEDIA,64
 Como vs Inter Milan,3.1,2.2,BetRivers,✅ VISITA FAVORITA,MEDIA,45
-Fiorentina vs Lazio,2.18,3.4,BetRivers,✅ LOCAL FAVORITO,MEDIA,46
+Fiorentina vs Lazio,2.3,3.65,Bovada,✅ LOCAL FAVORITO,MEDIA,43

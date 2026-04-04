@@ -1,19 +1,18 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Mallorca vs Real Madrid,2.9,2.6,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Real Betis vs Espanyol,1.62,5.1,BetRivers,✅ LOCAL FAVORITO,MEDIA,62
-Atlético Madrid vs Barcelona,3.0,2.1,FanDuel,✅ VISITA FAVORITA,MEDIA,48
+Real Betis vs Espanyol,2.6,8.0,Bovada,✅ LOCAL FAVORITO,MEDIA,38
+Atlético Madrid vs Barcelona,3.2,2.05,FanDuel,✅ VISITA FAVORITA,MEDIA,49
 Getafe vs Athletic Bilbao,3.1,2.7,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Valencia vs Celta Vigo,2.35,3.2,FanDuel,✅ LOCAL FAVORITO,MEDIA,43
 Oviedo vs Sevilla,2.8,2.8,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Alavés vs CA Osasuna,2.43,3.05,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Girona vs Villarreal,3.1,2.2,FanDuel,✅ VISITA FAVORITA,MEDIA,45
-Real Madrid vs Girona,1.17,12.5,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,85
-Real Sociedad vs Alavés,1.8,4.95,BetOnline.ag,✅ LOCAL FAVORITO,MEDIA,56
-Elche CF vs Valencia,2.44,3.12,BetOnline.ag,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Barcelona vs Espanyol,1.22,11.5,BetOnline.ag,🔥 LOCAL IMPERDIBLE,ALTA,82
-Sevilla vs Atlético Madrid,3.51,2.12,BetOnline.ag,✅ VISITA FAVORITA,MEDIA,47
-CA Osasuna vs Real Betis,2.35,2.85,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Mallorca vs Rayo Vallecano,2.5,2.7,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Celta Vigo vs Oviedo,1.67,4.5,LowVig.ag,✅ LOCAL FAVORITO,MEDIA,60
-Athletic Bilbao vs Villarreal,2.28,2.95,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Levante vs Getafe,2.7,2.75,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Real Madrid vs Girona,1.23,10.0,Bovada,🔥 LOCAL IMPERDIBLE,ALTA,81
+Real Sociedad vs Alavés,1.78,4.75,Bovada,✅ LOCAL FAVORITO,MEDIA,56
+Elche CF vs Valencia,2.34,3.15,Bovada,✅ LOCAL FAVORITO,MEDIA,43
+Barcelona vs Espanyol,1.21,11.0,Bovada,🔥 LOCAL IMPERDIBLE,ALTA,83
+Sevilla vs Atlético Madrid,3.4,2.11,Bovada,✅ VISITA FAVORITA,MEDIA,47
+CA Osasuna vs Real Betis,2.31,2.95,Bovada,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Mallorca vs Rayo Vallecano,2.56,2.69,Bovada,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Celta Vigo vs Oviedo,1.63,4.6,Bovada,✅ LOCAL FAVORITO,MEDIA,61
+Athletic Bilbao vs Villarreal,2.35,2.85,Bovada,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Levante vs Getafe,2.7,2.83,Bovada,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
