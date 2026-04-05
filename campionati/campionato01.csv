@@ -1,10 +1,8 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-León vs Atlas,2.25,3.0,FanDuel,✅ LOCAL FAVORITO,MEDIA,44
-Cruz Azul vs Pachuca,4.3,1.69,FanDuel,✅ VISITA FAVORITA,MEDIA,59
-Santos Laguna vs América,4.6,1.61,FanDuel,✅ VISITA FAVORITA,MEDIA,62
+Santos Laguna vs América,101.0,1.05,FanDuel,🚀 VISITA IMPERDIBLE,ALTA,95
 Guadalajara vs Pumas,1.48,6.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,68
 Querétaro vs FC Juárez,2.75,2.4,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Puebla vs León,2.12,3.05,BetRivers,✅ LOCAL FAVORITO,MEDIA,47
+Puebla vs León,2.16,3.05,BetRivers,✅ LOCAL FAVORITO,MEDIA,46
 FC Juárez vs Tijuana,1.85,3.7,BetRivers,✅ LOCAL FAVORITO,MEDIA,54
 Tigres vs Guadalajara,2.6,2.48,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Querétaro vs Necaxa,2.23,2.95,BetRivers,✅ LOCAL FAVORITO,MEDIA,45
