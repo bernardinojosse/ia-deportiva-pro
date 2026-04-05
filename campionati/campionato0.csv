@@ -1,11 +1,10 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Pisa vs Torino,3.2,2.5,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Inter Milan vs AS Roma,1.61,6.0,FanDuel,✅ LOCAL FAVORITO,MEDIA,62
+Inter Milan vs AS Roma,1.59,6.0,FanDuel,✅ LOCAL FAVORITO,MEDIA,63
 Udinese vs Como,5.4,1.67,FanDuel,✅ VISITA FAVORITA,MEDIA,60
 Lecce vs Atalanta BC,5.1,1.68,BetRivers,✅ VISITA FAVORITA,MEDIA,60
 Juventus vs Genoa,1.34,8.5,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,75
-Napoli vs AC Milan,2.5,3.1,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-AS Roma vs Pisa,1.34,9.0,Bovada,🔥 LOCAL IMPERDIBLE,ALTA,75
+Napoli vs AC Milan,2.45,3.2,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+AS Roma vs Pisa,1.33,9.25,Bovada,🔥 LOCAL IMPERDIBLE,ALTA,75
 Cagliari vs Cremonese,2.15,3.4,FanDuel,✅ LOCAL FAVORITO,MEDIA,47
 Torino vs Hellas Verona,1.83,4.4,FanDuel,✅ LOCAL FAVORITO,MEDIA,55
 AC Milan vs Udinese,1.32,8.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,76
