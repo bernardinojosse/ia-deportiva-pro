@@ -1,11 +1,21 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Athletic Bilbao vs CA Osasuna,1.77,4.4,FanDuel,✅ LOCAL FAVORITO,MEDIA,56
-Mallorca vs Valencia,2.3,3.0,FanDuel,✅ LOCAL FAVORITO,MEDIA,43
-Real Madrid vs Alavés,1.21,11.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,83
-Girona vs Real Betis,2.4,2.75,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Elche CF vs Atlético Madrid,3.0,2.25,FanDuel,✅ VISITA FAVORITA,MEDIA,44
-Real Sociedad vs Getafe,1.83,4.6,FanDuel,✅ LOCAL FAVORITO,MEDIA,55
-Barcelona vs Celta Vigo,1.24,9.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,81
-Levante vs Sevilla,2.55,2.7,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Rayo Vallecano vs Espanyol,1.83,4.2,FanDuel,✅ LOCAL FAVORITO,MEDIA,55
-Oviedo vs Villarreal,3.8,1.83,FanDuel,✅ VISITA FAVORITA,MEDIA,55
+Athletic Bilbao vs CA Osasuna,1.81,4.6,Bovada,✅ LOCAL FAVORITO,MEDIA,55
+Mallorca vs Valencia,2.58,2.85,Bovada,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Real Madrid vs Alavés,1.28,9.75,Bovada,🔥 LOCAL IMPERDIBLE,ALTA,78
+Girona vs Real Betis,2.47,2.85,Bovada,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Elche CF vs Atlético Madrid,3.0,2.2,Bovada,✅ VISITA FAVORITA,MEDIA,45
+Real Sociedad vs Getafe,1.75,4.95,Bovada,✅ LOCAL FAVORITO,MEDIA,57
+Barcelona vs Celta Vigo,1.25,8.5,Bovada,🔥 LOCAL IMPERDIBLE,ALTA,80
+Levante vs Sevilla,2.57,2.71,Bovada,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Rayo Vallecano vs Espanyol,1.9,4.25,Bovada,✅ LOCAL FAVORITO,MEDIA,53
+Oviedo vs Villarreal,3.85,1.94,Bovada,✅ VISITA FAVORITA,MEDIA,52
+Real Betis vs Real Madrid,3.55,1.86,Bovada,✅ VISITA FAVORITA,MEDIA,54
+Alavés vs Mallorca,2.14,3.8,Bovada,✅ LOCAL FAVORITO,MEDIA,47
+Getafe vs Barcelona,5.45,1.63,Bovada,✅ VISITA FAVORITA,MEDIA,61
+Valencia vs Girona,2.05,3.65,Bovada,✅ LOCAL FAVORITO,MEDIA,49
+Atlético Madrid vs Athletic Bilbao,1.77,4.5,Bovada,✅ LOCAL FAVORITO,MEDIA,56
+Rayo Vallecano vs Real Sociedad,2.41,2.8,Bovada,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Oviedo vs Elche CF,2.32,3.0,Bovada,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+CA Osasuna vs Sevilla,2.1,3.25,Bovada,✅ LOCAL FAVORITO,MEDIA,48
+Villarreal vs Celta Vigo,1.75,4.45,Bovada,✅ LOCAL FAVORITO,MEDIA,57
+Espanyol vs Levante,1.87,4.25,Bovada,✅ LOCAL FAVORITO,MEDIA,53
