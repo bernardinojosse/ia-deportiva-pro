@@ -1,19 +1,21 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Udinese vs Parma,2.15,3.9,FanDuel,✅ LOCAL FAVORITO,MEDIA,47
-Napoli vs Lazio,1.51,7.5,FanDuel,✅ LOCAL FAVORITO,MEDIA,66
-AS Roma vs Atalanta BC,2.5,2.95,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Cremonese vs Torino,2.95,2.55,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Hellas Verona vs AC Milan,6.5,1.54,FanDuel,✅ VISITA FAVORITA,MEDIA,65
-Pisa vs Genoa,3.2,2.45,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Juventus vs Bologna,1.45,7.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,69
-Lecce vs Fiorentina,3.4,2.15,FanDuel,✅ VISITA FAVORITA,MEDIA,47
-Napoli vs Cremonese,1.34,8.0,DraftKings,🔥 LOCAL IMPERDIBLE,ALTA,75
-Parma vs Pisa,2.0,3.7,DraftKings,✅ LOCAL FAVORITO,MEDIA,50
-Bologna vs AS Roma,2.9,2.35,DraftKings,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Hellas Verona vs Lecce,2.15,3.35,DraftKings,✅ LOCAL FAVORITO,MEDIA,47
-Fiorentina vs Sassuolo,1.83,4.2,DraftKings,✅ LOCAL FAVORITO,MEDIA,55
-Genoa vs Como,3.9,1.8,DraftKings,✅ VISITA FAVORITA,MEDIA,56
-Torino vs Inter Milan,6.5,1.37,DraftKings,🚀 VISITA IMPERDIBLE,ALTA,73
-AC Milan vs Juventus,2.5,2.6,DraftKings,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Cagliari vs Atalanta BC,4.3,1.65,DraftKings,✅ VISITA FAVORITA,MEDIA,61
-Lazio vs Udinese,1.95,3.7,DraftKings,✅ LOCAL FAVORITO,MEDIA,51
+Pisa vs Lecce,3.4,2.3,FanDuel,✅ VISITA FAVORITA,MEDIA,43
+Udinese vs Torino,2.3,3.2,FanDuel,✅ LOCAL FAVORITO,MEDIA,43
+Como vs Napoli,2.25,3.3,FanDuel,✅ LOCAL FAVORITO,MEDIA,44
+Atalanta BC vs Genoa,1.57,5.8,FanDuel,✅ LOCAL FAVORITO,MEDIA,64
+Bologna vs Cagliari,1.77,4.8,FanDuel,✅ LOCAL FAVORITO,MEDIA,56
+Sassuolo vs AC Milan,4.6,1.61,FanDuel,✅ VISITA FAVORITA,MEDIA,62
+Juventus vs Hellas Verona,1.18,12.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,85
+Inter Milan vs Parma,1.17,12.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,85
+Cremonese vs Lazio,2.95,2.5,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+AS Roma vs Fiorentina,1.59,5.3,FanDuel,✅ LOCAL FAVORITO,MEDIA,63
+Torino vs Sassuolo,2.25,3.1,FanDuel,✅ LOCAL FAVORITO,MEDIA,44
+Cagliari vs Udinese,2.45,2.9,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Lazio vs Inter Milan,4.5,1.67,FanDuel,✅ VISITA FAVORITA,MEDIA,60
+Lecce vs Juventus,6.0,1.48,FanDuel,🚀 VISITA IMPERDIBLE,ALTA,68
+Hellas Verona vs Como,7.5,1.37,FanDuel,🚀 VISITA IMPERDIBLE,ALTA,73
+Cremonese vs Pisa,2.0,3.8,FanDuel,✅ LOCAL FAVORITO,MEDIA,50
+Fiorentina vs Genoa,2.0,3.8,FanDuel,✅ LOCAL FAVORITO,MEDIA,50
+Parma vs AS Roma,4.6,1.71,FanDuel,✅ VISITA FAVORITA,MEDIA,58
+AC Milan vs Atalanta BC,2.05,3.4,FanDuel,✅ LOCAL FAVORITO,MEDIA,49
+Napoli vs Bologna,1.5,5.9,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,67
