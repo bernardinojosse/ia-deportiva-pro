@@ -1,11 +1,24 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Udinese vs Como,5.0,1.72,BetRivers,✅ VISITA FAVORITA,MEDIA,58
-Inter Milan vs Monza,1.19,14.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,84
-Parma vs Cagliari,2.6,2.85,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Genoa vs Napoli,4.9,1.79,BetRivers,✅ VISITA FAVORITA,MEDIA,56
-Frosinone vs Juventus,7.5,1.38,FanDuel,🚀 VISITA IMPERDIBLE,ALTA,72
-Venezia vs Lecce,2.2,3.3,FanDuel,✅ LOCAL FAVORITO,MEDIA,45
-Torino vs AC Milan,4.4,1.71,FanDuel,✅ VISITA FAVORITA,MEDIA,58
-Atalanta BC vs Sassuolo,1.48,5.9,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,68
-Bologna vs Lazio,2.1,3.5,FanDuel,✅ LOCAL FAVORITO,MEDIA,48
-AS Roma vs Fiorentina,1.51,6.0,FanDuel,✅ LOCAL FAVORITO,MEDIA,66
+Genoa vs Como,5.2,1.74,FanDuel,✅ VISITA FAVORITA,MEDIA,57
+Fiorentina vs Torino,1.83,4.2,FanDuel,✅ LOCAL FAVORITO,MEDIA,55
+Inter Milan vs Napoli,1.62,5.4,FanDuel,✅ LOCAL FAVORITO,MEDIA,62
+AS Roma vs Atalanta BC,1.69,4.7,FanDuel,✅ LOCAL FAVORITO,MEDIA,59
+Frosinone vs Venezia,2.75,2.45,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Parma vs Monza,2.4,3.2,FanDuel,✅ LOCAL FAVORITO,MEDIA,42
+Bologna vs Sassuolo,1.83,3.9,FanDuel,✅ LOCAL FAVORITO,MEDIA,55
+Juventus vs AC Milan,2.05,3.7,FanDuel,✅ LOCAL FAVORITO,MEDIA,49
+Cagliari vs Lecce,1.95,4.5,FanDuel,✅ LOCAL FAVORITO,MEDIA,51
+Udinese vs Lazio,2.8,2.6,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Venezia vs Fiorentina,2.65,2.6,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Genoa vs Frosinone,1.77,4.6,FanDuel,✅ LOCAL FAVORITO,MEDIA,56
+Lazio vs AC Milan,3.5,2.1,FanDuel,✅ VISITA FAVORITA,MEDIA,48
+Sassuolo vs Juventus,5.7,1.53,FanDuel,✅ VISITA FAVORITA,MEDIA,65
+Atalanta BC vs Cagliari,1.48,6.5,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,68
+Torino vs AS Roma,5.1,1.67,FanDuel,✅ VISITA FAVORITA,MEDIA,60
+Como vs Parma,1.31,9.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,76
+Lecce vs Monza,2.1,3.5,FanDuel,✅ LOCAL FAVORITO,MEDIA,48
+Napoli vs Bologna,1.53,5.7,FanDuel,✅ LOCAL FAVORITO,MEDIA,65
+Sassuolo vs Juventus,5.6,1.57,BetRivers,✅ VISITA FAVORITA,MEDIA,64
+Torino vs AS Roma,5.1,1.71,BetRivers,✅ VISITA FAVORITA,MEDIA,58
+Como vs Parma,1.34,9.5,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,75
+Inter Milan vs Udinese,1.29,8.5,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,78
