@@ -1,12 +1,11 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Inter Milan vs Napoli,1.95,5.6,FanDuel,✅ LOCAL FAVORITO,MEDIA,51
-AS Roma vs Atalanta BC,1.65,5.2,FanDuel,✅ LOCAL FAVORITO,MEDIA,61
-Frosinone vs Venezia,2.75,2.55,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Parma vs Monza,2.6,2.95,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+AS Roma vs Atalanta BC,1.61,7.0,FanDuel,✅ LOCAL FAVORITO,MEDIA,62
+Frosinone vs Venezia,2.7,2.6,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Parma vs Monza,2.6,3.0,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Bologna vs Sassuolo,2.0,3.8,FanDuel,✅ LOCAL FAVORITO,MEDIA,50
-Juventus vs AC Milan,2.05,3.8,FanDuel,✅ LOCAL FAVORITO,MEDIA,49
+Juventus vs AC Milan,2.1,3.6,FanDuel,✅ LOCAL FAVORITO,MEDIA,48
 Cagliari vs Lecce,2.0,4.2,FanDuel,✅ LOCAL FAVORITO,MEDIA,50
-Udinese vs Lazio,2.9,2.6,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Udinese vs Lazio,2.9,2.65,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Venezia vs Fiorentina,2.75,2.45,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Genoa vs Frosinone,1.77,4.6,FanDuel,✅ LOCAL FAVORITO,MEDIA,56
 Lazio vs AC Milan,3.2,2.25,FanDuel,✅ VISITA FAVORITA,MEDIA,44
