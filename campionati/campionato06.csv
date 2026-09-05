@@ -1,12 +1,11 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Athletic Bilbao vs Atlético Madrid,3.0,2.4,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Rayo Vallecano vs Real Racing Club de Santander,2.0,3.7,FanDuel,✅ LOCAL FAVORITO,MEDIA,50
-Villarreal vs Deportivo La Coruña,1.45,6.5,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,69
-Valencia vs Barcelona,9.5,1.29,FanDuel,🚀 VISITA IMPERDIBLE,ALTA,78
+Rayo Vallecano vs Real Racing Club de Santander,2.0,4.0,FanDuel,✅ LOCAL FAVORITO,MEDIA,50
+Villarreal vs Deportivo La Coruña,1.43,7.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,70
+Valencia vs Barcelona,9.5,1.28,FanDuel,🚀 VISITA IMPERDIBLE,ALTA,78
 Alavés vs CA Osasuna,2.25,3.6,FanDuel,✅ LOCAL FAVORITO,MEDIA,44
 Málaga vs Levante,2.35,3.1,FanDuel,✅ LOCAL FAVORITO,MEDIA,43
 Espanyol vs Sevilla,2.25,3.4,FanDuel,✅ LOCAL FAVORITO,MEDIA,44
-Getafe vs Celta Vigo,2.4,3.4,FanDuel,✅ LOCAL FAVORITO,MEDIA,42
+Getafe vs Celta Vigo,2.35,3.5,FanDuel,✅ LOCAL FAVORITO,MEDIA,43
 Elche CF vs Real Sociedad,2.95,2.3,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Sevilla vs Valencia,2.28,3.25,BetRivers,✅ LOCAL FAVORITO,MEDIA,44
 Real Racing Club de Santander vs Alavés,2.33,2.95,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
