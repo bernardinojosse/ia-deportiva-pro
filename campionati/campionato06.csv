@@ -1,7 +1,6 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Espanyol vs Sevilla,2.55,3.6,FanDuel,✅ LOCAL FAVORITO,MEDIA,39
-Getafe vs Celta Vigo,2.5,3.4,FanDuel,✅ LOCAL FAVORITO,MEDIA,40
-Elche CF vs Real Sociedad,3.0,2.3,FanDuel,✅ VISITA FAVORITA,MEDIA,43
+Getafe vs Celta Vigo,2.5,3.3,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Elche CF vs Real Sociedad,3.2,2.2,FanDuel,✅ VISITA FAVORITA,MEDIA,45
 Sevilla vs Valencia,2.28,3.3,BetRivers,✅ LOCAL FAVORITO,MEDIA,44
 Real Racing Club de Santander vs Alavés,2.43,2.8,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 CA Osasuna vs Espanyol,1.87,4.1,BetRivers,✅ LOCAL FAVORITO,MEDIA,53
@@ -10,15 +9,15 @@ Real Madrid vs Rayo Vallecano,1.11,16.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,90
 Celta Vigo vs Málaga,1.71,4.6,FanDuel,✅ LOCAL FAVORITO,MEDIA,58
 Levante vs Barcelona,10.0,1.18,FanDuel,🚀 VISITA IMPERDIBLE,ALTA,85
 Getafe vs Deportivo La Coruña,2.2,3.7,FanDuel,✅ LOCAL FAVORITO,MEDIA,45
-Real Sociedad vs Atlético Madrid,2.95,2.2,FanDuel,✅ VISITA FAVORITA,MEDIA,45
+Real Sociedad vs Atlético Madrid,2.9,2.35,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Villarreal vs Real Betis,1.83,3.9,FanDuel,✅ LOCAL FAVORITO,MEDIA,55
 Rayo Vallecano vs Espanyol,2.05,3.5,FanDuel,✅ LOCAL FAVORITO,MEDIA,49
 Alavés vs Valencia,2.2,3.4,FanDuel,✅ LOCAL FAVORITO,MEDIA,45
 Elche CF vs Real Madrid,8.5,1.24,FanDuel,🚀 VISITA IMPERDIBLE,ALTA,81
-Atlético Madrid vs CA Osasuna,1.51,5.9,FanDuel,✅ LOCAL FAVORITO,MEDIA,66
+Atlético Madrid vs CA Osasuna,1.48,6.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,68
 Deportivo La Coruña vs Sevilla,2.25,3.3,BetMGM,✅ LOCAL FAVORITO,MEDIA,44
 Levante vs Athletic Bilbao,3.1,2.25,BetMGM,✅ VISITA FAVORITA,MEDIA,44
 Barcelona vs Real Racing Club de Santander,1.13,16.0,BetMGM,🔥 LOCAL IMPERDIBLE,ALTA,88
-Real Betis vs Getafe,1.71,4.8,FanDuel,✅ LOCAL FAVORITO,MEDIA,58
+Real Betis vs Getafe,1.77,4.6,FanDuel,✅ LOCAL FAVORITO,MEDIA,56
 Málaga vs Villarreal,3.5,2.0,BetMGM,✅ VISITA FAVORITA,MEDIA,50
 Espanyol vs Elche CF,2.05,3.6,FanDuel,✅ LOCAL FAVORITO,MEDIA,49
