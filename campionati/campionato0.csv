@@ -1,9 +1,8 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Sassuolo vs Juventus,5.5,2.3,FanDuel,✅ VISITA FAVORITA,MEDIA,43
-Torino vs AS Roma,6.0,1.51,BetRivers,✅ VISITA FAVORITA,MEDIA,66
+Torino vs AS Roma,6.0,1.53,BetRivers,✅ VISITA FAVORITA,MEDIA,65
 Como vs Parma,1.2,13.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,83
 Inter Milan vs Udinese,1.21,11.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,83
-Monza vs Sassuolo,2.8,2.35,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Monza vs Sassuolo,2.85,2.4,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Bologna vs Torino,1.83,4.1,FanDuel,✅ LOCAL FAVORITO,MEDIA,55
 Udinese vs Cagliari,2.0,3.9,FanDuel,✅ LOCAL FAVORITO,MEDIA,50
 AS Roma vs Inter Milan,2.45,2.7,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
