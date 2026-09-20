@@ -1,8 +1,6 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Frosinone vs Como,5.7,1.45,FanDuel,🚀 VISITA IMPERDIBLE,ALTA,69
-Parma vs Genoa,3.4,2.45,FanDuel,✅ VISITA FAVORITA,MEDIA,41
-Juventus vs Atalanta BC,1.67,5.1,FanDuel,✅ LOCAL FAVORITO,MEDIA,60
-AC Milan vs Lecce,1.24,11.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,81
+Juventus vs Atalanta BC,1.0,351.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,100
+AC Milan vs Lecce,1.21,11.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,83
 Genoa vs Fiorentina,2.88,2.38,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Inter Milan vs Parma,1.12,18.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,89
 Napoli vs Frosinone,1.41,7.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,71

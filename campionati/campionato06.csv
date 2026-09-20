@@ -1,8 +1,6 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Getafe vs Málaga,2.4,4.33,BetMGM,✅ LOCAL FAVORITO,MEDIA,42
-Atlético Madrid vs Real Madrid,3.4,2.0,BetMGM,✅ VISITA FAVORITA,MEDIA,50
-Deportivo La Coruña vs Real Betis,3.5,2.0,BetMGM,✅ VISITA FAVORITA,MEDIA,50
-Villarreal vs Levante,1.53,5.5,BetMGM,✅ LOCAL FAVORITO,MEDIA,65
+Villarreal vs Levante,1.12,29.0,BetMGM,🔥 LOCAL IMPERDIBLE,ALTA,89
+Deportivo La Coruña vs Real Betis,15.0,1.25,BetMGM,🚀 VISITA IMPERDIBLE,ALTA,80
 Valencia vs Real Sociedad,2.7,2.55,BetMGM,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Málaga vs Espanyol,2.4,3.05,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Rayo Vallecano vs Athletic Bilbao,3.0,2.38,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
