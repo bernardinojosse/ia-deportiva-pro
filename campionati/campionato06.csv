@@ -1,14 +1,14 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Málaga vs Espanyol,2.55,2.85,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Rayo Vallecano vs Athletic Bilbao,3.0,2.38,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Alavés vs Atlético Madrid,3.85,1.92,BetRivers,✅ VISITA FAVORITA,MEDIA,52
+Málaga vs Espanyol,2.55,2.9,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Rayo Vallecano vs Athletic Bilbao,3.0,2.4,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Alavés vs Atlético Madrid,3.9,1.92,BetRivers,✅ VISITA FAVORITA,MEDIA,52
 Barcelona vs Getafe,1.05,29.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,95
-Real Madrid vs Villarreal,1.27,9.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,79
-Elche CF vs Celta Vigo,2.95,2.55,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Real Sociedad vs Deportivo La Coruña,1.82,4.1,BetRivers,✅ LOCAL FAVORITO,MEDIA,55
-Real Betis vs CA Osasuna,1.73,4.5,BetRivers,✅ LOCAL FAVORITO,MEDIA,58
-Real Racing Club de Santander vs Valencia,1.94,3.8,BetRivers,✅ LOCAL FAVORITO,MEDIA,52
-Levante vs Sevilla,2.5,2.9,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Real Madrid vs Villarreal,1.26,9.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,79
+Elche CF vs Celta Vigo,2.88,2.55,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Real Sociedad vs Deportivo La Coruña,1.88,4.1,BetRivers,✅ LOCAL FAVORITO,MEDIA,53
+Real Betis vs CA Osasuna,1.71,4.6,BetRivers,✅ LOCAL FAVORITO,MEDIA,58
+Real Racing Club de Santander vs Valencia,1.97,3.8,BetRivers,✅ LOCAL FAVORITO,MEDIA,51
+Levante vs Sevilla,2.48,2.88,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Deportivo La Coruña vs Levante,2.05,3.5,FanDuel,✅ LOCAL FAVORITO,MEDIA,49
 Espanyol vs Atlético Madrid,4.1,1.77,FanDuel,✅ VISITA FAVORITA,MEDIA,56
 Villarreal vs Elche CF,1.38,6.5,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,72
@@ -17,5 +17,5 @@ Valencia vs Athletic Bilbao,3.4,2.1,FanDuel,✅ VISITA FAVORITA,MEDIA,48
 CA Osasuna vs Real Racing Club de Santander,1.83,3.9,FanDuel,✅ LOCAL FAVORITO,MEDIA,55
 Celta Vigo vs Alavés,2.0,3.8,FanDuel,✅ LOCAL FAVORITO,MEDIA,50
 Málaga vs Real Sociedad,3.0,2.2,FanDuel,✅ VISITA FAVORITA,MEDIA,45
-Real Madrid vs Sevilla,1.24,9.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,81
+Real Madrid vs Sevilla,1.21,9.5,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,83
 Getafe vs Rayo Vallecano,2.65,2.8,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
