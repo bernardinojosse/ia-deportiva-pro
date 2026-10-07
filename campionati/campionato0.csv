@@ -1,14 +1,14 @@
 match,quota1,quota2,bookie,pick,confidence,probability
 Genoa vs Fiorentina,3.0,2.32,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Inter Milan vs Parma,1.12,18.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,89
-Napoli vs Frosinone,1.4,7.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,71
+Inter Milan vs Parma,1.13,18.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,88
+Napoli vs Frosinone,1.38,7.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,72
 Como vs AS Roma,2.5,2.6,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Lecce vs Bologna,3.85,1.93,BetRivers,✅ VISITA FAVORITA,MEDIA,52
 Lazio vs Monza,1.57,5.5,BetRivers,✅ LOCAL FAVORITO,MEDIA,64
 Sassuolo vs AC Milan,4.2,1.78,BetRivers,✅ VISITA FAVORITA,MEDIA,56
 Cagliari vs Juventus,6.0,1.56,BetRivers,✅ VISITA FAVORITA,MEDIA,64
 Atalanta BC vs Venezia,1.6,4.8,BetRivers,✅ LOCAL FAVORITO,MEDIA,62
-Torino vs Udinese,2.28,3.0,BetRivers,✅ LOCAL FAVORITO,MEDIA,44
+Torino vs Udinese,2.33,3.0,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Frosinone vs Sassuolo,2.3,2.8,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Venezia vs Napoli,4.7,1.69,FanDuel,✅ VISITA FAVORITA,MEDIA,59
 Bologna vs Inter Milan,5.3,1.5,FanDuel,🚀 VISITA IMPERDIBLE,ALTA,67
@@ -17,5 +17,5 @@ Udinese vs Lecce,1.83,4.1,FanDuel,✅ LOCAL FAVORITO,MEDIA,55
 Fiorentina vs Como,3.4,2.05,FanDuel,✅ VISITA FAVORITA,MEDIA,49
 AC Milan vs Atalanta BC,1.77,4.3,FanDuel,✅ LOCAL FAVORITO,MEDIA,56
 Juventus vs Lazio,1.61,5.1,FanDuel,✅ LOCAL FAVORITO,MEDIA,62
-Monza vs Cagliari,2.25,3.2,FanDuel,✅ LOCAL FAVORITO,MEDIA,44
+Monza vs Cagliari,2.3,3.2,FanDuel,✅ LOCAL FAVORITO,MEDIA,43
 Parma vs Torino,3.2,2.35,FanDuel,✅ VISITA FAVORITA,MEDIA,43
