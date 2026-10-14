@@ -1,5 +1,5 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Frosinone vs Sassuolo,2.4,2.7,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Frosinone vs Sassuolo,2.4,2.65,FanDuel,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Venezia vs Napoli,4.7,1.69,FanDuel,✅ VISITA FAVORITA,MEDIA,59
 Bologna vs Inter Milan,5.2,1.59,FanDuel,✅ VISITA FAVORITA,MEDIA,63
 AS Roma vs Genoa,1.31,8.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,76
@@ -13,7 +13,7 @@ Torino vs Monza,2.12,3.4,BetRivers,✅ LOCAL FAVORITO,MEDIA,47
 Cagliari vs Bologna,3.0,2.35,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Como vs Sassuolo,1.43,6.4,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,70
 Napoli vs AS Roma,2.9,2.35,Bovada,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Lazio vs Parma,1.55,6.25,Bovada,✅ LOCAL FAVORITO,MEDIA,65
+Lazio vs Parma,1.54,6.25,Bovada,✅ LOCAL FAVORITO,MEDIA,65
 Inter Milan vs Fiorentina,1.38,7.0,Bovada,🔥 LOCAL IMPERDIBLE,ALTA,72
 Atalanta BC vs Frosinone,1.64,5.0,Bovada,✅ LOCAL FAVORITO,MEDIA,61
 Genoa vs Venezia,2.15,3.7,Bovada,✅ LOCAL FAVORITO,MEDIA,47
