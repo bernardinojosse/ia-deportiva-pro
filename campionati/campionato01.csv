@@ -1,10 +1,7 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Toluca vs Atlético San Luis,1.37,8.5,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,73
-León vs América,28.0,1.08,FanDuel,🚀 VISITA IMPERDIBLE,ALTA,93
-Cruz Azul vs FC Juárez,1.28,9.0,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,78
 Monterrey vs Pachuca,1.61,4.6,BetRivers,✅ LOCAL FAVORITO,MEDIA,62
 Guadalajara vs Necaxa,1.41,6.25,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,71
-FC Juárez vs Atlante FC,2.43,2.65,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+FC Juárez vs Atlante FC,2.75,2.33,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Atlético San Luis vs Querétaro,2.25,2.88,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Tigres vs León,1.88,3.65,BetRivers,✅ LOCAL FAVORITO,MEDIA,53
 Atlas vs América,3.05,2.16,BetRivers,✅ VISITA FAVORITA,MEDIA,46
@@ -16,3 +13,4 @@ Necaxa vs FC Juárez,1.89,3.45,BetRivers,✅ LOCAL FAVORITO,MEDIA,53
 Atlante FC vs Atlético San Luis,2.14,3.05,BetRivers,✅ LOCAL FAVORITO,MEDIA,47
 León vs Toluca,3.4,1.92,BetRivers,✅ VISITA FAVORITA,MEDIA,52
 Monterrey vs Guadalajara,2.5,2.43,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Pumas vs Tigres,2.75,2.33,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
