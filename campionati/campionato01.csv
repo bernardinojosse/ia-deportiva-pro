@@ -1,6 +1,4 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Monterrey vs Guadalajara,5.2,1.8,FanDuel,✅ VISITA FAVORITA,MEDIA,56
-Pumas vs Tigres,2.55,2.55,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
 Atlas vs Puebla,1.72,4.2,BetRivers,✅ LOCAL FAVORITO,MEDIA,58
 Querétaro vs Cruz Azul,3.45,1.93,BetRivers,✅ VISITA FAVORITA,MEDIA,52
 América vs Pachuca,1.55,5.2,BetRivers,✅ LOCAL FAVORITO,MEDIA,65
@@ -9,3 +7,4 @@ América vs Tijuana,1.49,5.5,BetRivers,🔥 LOCAL IMPERDIBLE,ALTA,67
 Atlético San Luis vs Atlas,2.18,2.95,BetRivers,✅ LOCAL FAVORITO,MEDIA,46
 FC Juárez vs Querétaro,3.2,2.04,BetRivers,✅ VISITA FAVORITA,MEDIA,49
 Puebla vs Pumas,2.8,2.28,BetRivers,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Guadalajara vs Atlante FC,1.42,6.0,FanDuel,🔥 LOCAL IMPERDIBLE,ALTA,70
