@@ -1,9 +1,9 @@
 match,quota1,quota2,bookie,pick,confidence,probability
-Napoli vs Lazio,2.35,2.95,Bovada,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
-Genoa vs AC Milan,4.5,1.85,Bovada,✅ VISITA FAVORITA,MEDIA,54
-Monza vs Atalanta BC,3.25,2.1,Bovada,✅ VISITA FAVORITA,MEDIA,48
-Inter Milan vs Como,1.91,3.55,Bovada,✅ LOCAL FAVORITO,MEDIA,52
-Fiorentina vs Juventus,3.4,2.1,Bovada,✅ VISITA FAVORITA,MEDIA,48
+Napoli vs Lazio,2.35,2.9,Bovada,⚖️ EMPATE / AMBOS ANOTAN,MEDIA,33
+Genoa vs AC Milan,4.1,2.0,Bovada,✅ VISITA FAVORITA,MEDIA,50
+Monza vs Atalanta BC,3.35,2.05,Bovada,✅ VISITA FAVORITA,MEDIA,49
+Inter Milan vs Como,2.0,3.35,Bovada,✅ LOCAL FAVORITO,MEDIA,50
+Fiorentina vs Juventus,3.3,2.15,Bovada,✅ VISITA FAVORITA,MEDIA,47
 Como vs Cagliari,1.31,7.5,DraftKings,🔥 LOCAL IMPERDIBLE,ALTA,76
 Lazio vs Lecce,1.32,7.0,DraftKings,🔥 LOCAL IMPERDIBLE,ALTA,76
 Parma vs AS Roma,7.0,1.32,DraftKings,🚀 VISITA IMPERDIBLE,ALTA,76
